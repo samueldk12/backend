@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-code"></i>
+                Backend Study
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section style="padding: 3rem 0; min-height: 70vh;">
+        <div class="container">
+            <h1 class="section-title">
+                <span class="gradient-text">Quiz Interativo</span>
+            </h1>
+
+            <!-- Quiz Setup -->
+            <div id="quizSetup" class="card" style="max-width: 600px; margin: 0 auto;">
+                <div class="card-body">
+                    <h3 style="margin-bottom: 2rem; text-align: center;">Escolha o Tópico</h3>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Tópico:</label>
+                        <select id="topicSelect" style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 2px solid var(--gray-light); font-size: 1rem;">
+                            <option value="random">Todos (Aleatório)</option>
+                            <option value="fundamentos">Fundamentos</option>
+                            <option value="database">Banco de Dados</option>
+                            <option value="architecture">Arquitetura</option>
+                            <option value="system_design">System Design</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Número de Questões:</label>
+                        <input type="number" id="numQuestions" min="1" max="20" value="5" style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 2px solid var(--gray-light); font-size: 1rem;">
+                    </div>
+
+                    <button class="btn btn-primary btn-large btn-block" onclick="startQuiz()">
+                        <i class="fas fa-play"></i> Iniciar Quiz
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Question -->
+            <div id="quizQuestion" style="display: none; max-width: 800px; margin: 0 auto;">
+                <!-- Progress -->
+                <div style="margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                        <span>Questão <span id="currentQuestion">1</span> de <span id="totalQuestions">5</span></span>
+                        <span>Pontuação: <span id="currentScore">0</span></span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="quizProgress" style="width: 20%;"></div>
+                    </div>
+                </div>
+
+                <!-- Question Card -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 id="questionText" style="margin-bottom: 2rem; color: var(--dark);"></h3>
+
+                        <div id="optionsContainer" style="display: grid; gap: 1rem;">
+                            <!-- Options will be loaded here -->
+                        </div>
+
+                        <div id="explanation" style="display: none; margin-top: 2rem; padding: 1rem; background: var(--gray-lighter); border-radius: var(--radius);">
+                            <strong>Explicação:</strong>
+                            <p id="explanationText" style="margin-top: 0.5rem;"></p>
+                        </div>
+
+                        <button id="nextButton" class="btn btn-primary btn-block" style="margin-top: 2rem; display: none;" onclick="nextQuestion()">
+                            Próxima Questão <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Results -->
+            <div id="quizResults" style="display: none; max-width: 600px; margin: 0 auto;">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 style="text-align: center;">Quiz Finalizado!</h3>
+                    </div>
+                    <div class="card-body">
+                        <div style="text-align: center; margin-bottom: 2rem;">
+                            <div style="font-size: 4rem; margin-bottom: 1rem;" id="resultIcon">🎉</div>
+                            <h2 style="color: var(--primary); margin-bottom: 1rem;">
+                                <span id="finalScore">0</span>/<span id="finalTotal">5</span>
+                            </h2>
+                            <p style="font-size: 1.5rem; color: var(--gray);" id="finalPercentage">0%</p>
+                        </div>
+
+                        <div id="resultMessage" class="card" style="margin-bottom: 2rem; text-align: center;">
+                            <!-- Result message will be loaded here -->
+                        </div>
+
+                        <div style="display: grid; gap: 1rem;">
+                            <button class="btn btn-primary btn-block" onclick="resetQuiz()">
+                                <i class="fas fa-redo"></i> Fazer Novo Quiz
+                            </button>
+                            <button class="btn btn-secondary btn-block" onclick="window.location.href='progress.html'">
+                                <i class="fas fa-chart-line"></i> Ver Progresso
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Stats -->
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="card-body">
+                        <h4 style="margin-bottom: 1rem;">Estatísticas</h4>
+                        <p><strong>Total de Quizzes Completados:</strong> <span id="totalQuizzes">0</span></p>
+                        <p><strong>Melhor Pontuação:</strong> <span id="bestScore">0%</span></p>
+                        <p><strong>Média Geral:</strong> <span id="avgScore">0%</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Backend Study Repository</h4>
+                    <p>Guia completo do básico ao avançado em Backend Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="modules.html">Módulos</a></li>
+                        <li><a href="projects.html">Projetos</a></li>
+                        <li><a href="progress.html">Progresso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz Interativo</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Feito com <i class="fas fa-heart"></i> para estudantes de Backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

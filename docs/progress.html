@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progresso - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-code"></i>
+                Backend Study
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html" class="active">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Progress Section -->
+    <section style="padding: 3rem 0; background: var(--gray-lighter);">
+        <div class="container">
+            <h1 class="section-title">
+                <span class="gradient-text">Seu Progresso</span>
+            </h1>
+
+            <!-- Summary Cards -->
+            <div class="stats-grid" style="margin-bottom: 3rem;">
+                <div class="stat-card">
+                    <i class="fas fa-book"></i>
+                    <div class="stat-number" id="modulesCompleted">0/8</div>
+                    <div class="stat-label">Módulos Concluídos</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-rocket"></i>
+                    <div class="stat-number" id="exercisesCompleted">0/8</div>
+                    <div class="stat-label">Exercícios Concluídos</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="stat-number" id="interviewsCompleted">0/12</div>
+                    <div class="stat-label">Projetos de Entrevista</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-trophy"></i>
+                    <div class="stat-number" id="overallProgress">0%</div>
+                    <div class="stat-label">Progresso Geral</div>
+                </div>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-body">
+                    <h3 style="margin-bottom: 2rem;">Progresso Detalhado</h3>
+
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span><i class="fas fa-book" style="color: var(--primary);"></i> Módulos Teóricos</span>
+                            <span id="modulesPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="modulesBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span><i class="fas fa-rocket" style="color: var(--success);"></i> Exercícios Práticos</span>
+                            <span id="exercisesPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="exercisesBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span><i class="fas fa-briefcase" style="color: var(--warning);"></i> Projetos de Entrevista</span>
+                            <span id="interviewsPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="interviewsBar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module Checklist -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>Módulos Teóricos</h3>
+                </div>
+                <div class="card-body">
+                    <div id="moduleChecklist">
+                        <!-- Module checklist will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exercise Checklist -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>Exercícios Práticos</h3>
+                </div>
+                <div class="card-body">
+                    <div id="exerciseChecklist">
+                        <!-- Exercise checklist will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interview Projects Checklist -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3>Projetos de Entrevista</h3>
+                </div>
+                <div class="card-body">
+                    <div id="interviewChecklist">
+                        <!-- Interview projects checklist will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Study Stats -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Estatísticas de Estudo</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Data de Início:</strong> <span id="startDate">-</span></p>
+                    <p><strong>Dias Estudando:</strong> <span id="daysStudying">0</span></p>
+                    <p><strong>Última Atualização:</strong> <span id="lastUpdate">-</span></p>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-secondary" onclick="exportProgress()">
+                            <i class="fas fa-download"></i> Exportar Progresso
+                        </button>
+                        <button class="btn btn-secondary" onclick="resetProgress()" style="margin-left: 1rem;">
+                            <i class="fas fa-redo"></i> Resetar Progresso
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Backend Study Repository</h4>
+                    <p>Guia completo do básico ao avançado em Backend Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="modules.html">Módulos</a></li>
+                        <li><a href="projects.html">Projetos</a></li>
+                        <li><a href="progress.html">Progresso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz Interativo</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Feito com <i class="fas fa-heart"></i> para estudantes de Backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Load progress on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProgressPage();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "01",
+    "name": "Fundamentos",
+    "category": "fundamentos",
+    "description": "Conceitos fundamentais de sistemas operacionais, CPU, memória, threads, processos, GIL e async/await.",
+    "icon": "fas fa-microchip",
+    "topics": ["CPU", "Memória", "Threads", "GIL", "Async", "Processos"],
+    "examples": 3,
+    "githubPath": "../01-fundamentos/"
+  },
+  {
+    "id": "02",
+    "name": "Protocolos",
+    "category": "protocolos",
+    "description": "Protocolos de comunicação: REST, GraphQL, gRPC, WebSocket e quando usar cada um.",
+    "icon": "fas fa-network-wired",
+    "topics": ["REST", "GraphQL", "gRPC", "WebSocket"],
+    "examples": 3,
+    "githubPath": "../02-protocolos/"
+  },
+  {
+    "id": "03",
+    "name": "Banco de Dados",
+    "category": "database",
+    "description": "SQL vs NoSQL, indexes, transactions, N+1 problem, query optimization.",
+    "icon": "fas fa-database",
+    "topics": ["SQL", "NoSQL", "Indexes", "Transactions", "N+1", "Query Optimization"],
+    "examples": 2,
+    "githubPath": "../03-banco-dados/"
+  },
+  {
+    "id": "04",
+    "name": "Arquiteturas",
+    "category": "arquitetura",
+    "description": "Padrões de arquitetura: Monolith, Microservices, Clean Architecture, DDD.",
+    "icon": "fas fa-sitemap",
+    "topics": ["Monolith", "Microservices", "Clean Architecture", "DDD"],
+    "examples": 1,
+    "githubPath": "../04-arquiteturas/"
+  },
+  {
+    "id": "05",
+    "name": "Performance",
+    "category": "performance",
+    "description": "Otimização de performance: caching strategies, async vs sync, profiling.",
+    "icon": "fas fa-tachometer-alt",
+    "topics": ["Caching", "Async vs Sync", "Profiling", "Load Balancing"],
+    "examples": 2,
+    "githubPath": "../05-performance-concorrencia/"
+  },
+  {
+    "id": "06",
+    "name": "Filas e Streaming",
+    "category": "messaging",
+    "description": "Message queues e streaming: Celery, Kafka, RabbitMQ, Saga pattern.",
+    "icon": "fas fa-stream",
+    "topics": ["Celery", "Kafka", "RabbitMQ", "Saga Pattern"],
+    "examples": 1,
+    "githubPath": "../06-filas-streaming/"
+  },
+  {
+    "id": "07",
+    "name": "Cloud e High Architecture",
+    "category": "cloud",
+    "description": "Observabilidade: logs, metrics, traces, alerting, APM.",
+    "icon": "fas fa-cloud",
+    "topics": ["Observability", "Logs", "Metrics", "Traces", "APM"],
+    "examples": 1,
+    "githubPath": "../07-cloud-high-architecture/"
+  },
+  {
+    "id": "08",
+    "name": "Estruturas de Dados",
+    "category": "data-structures",
+    "description": "Estruturas de dados aplicadas ao backend: Hash Tables, Trees, Graphs, Heaps, Tries.",
+    "icon": "fas fa-project-diagram",
+    "topics": ["Hash Tables", "Trees", "Graphs", "Heaps", "Tries"],
+    "examples": 3,
+    "githubPath": "../08-estruturas-dados/"
+  }
+]
