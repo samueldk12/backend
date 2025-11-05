@@ -6,6 +6,34 @@
 
 Este repositório foi criado para guiar desenvolvedores desde conceitos fundamentais até tópicos avançados necessários para se tornar um desenvolvedor backend sênior capaz de trabalhar em qualquer empresa de tecnologia.
 
+## 🚀 CLI Interativa (NOVO!)
+
+Agora você pode gerenciar seus estudos através de uma **CLI interativa completa**!
+
+```bash
+# Instalação rápida
+pip install -r requirements-cli.txt
+
+# Comandos disponíveis
+./study                        # Ver informações
+./study module list            # Listar módulos
+./study module run 01 1        # Executar exemplo
+./study project list           # Listar projetos
+./study quiz start             # Quiz interativo
+./study progress show          # Ver progresso
+./study setup project          # Setup completo
+```
+
+**Features:**
+- 📚 Navegação interativa pelos módulos
+- 🚀 Execução de exemplos com um comando
+- 📊 Tracking de progresso automático
+- 🎯 Quiz interativo para testar conhecimento
+- ⚙️ Setup automático de ambiente (Docker, .env)
+- 📈 Estatísticas de estudo
+
+**Ver documentação completa:** [CLI_README.md](./CLI_README.md)
+
 ## 🏗️ Estrutura do Repositório
 
 ### Módulos Teóricos
