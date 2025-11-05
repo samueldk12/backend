@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-code"></i>
+                Backend Study
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html" class="active">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Projects Section -->
+    <section class="projects-section" style="padding: 3rem 0;">
+        <div class="container">
+            <h1 class="section-title">
+                <span class="gradient-text">Projetos Práticos</span>
+            </h1>
+
+            <!-- Tabs -->
+            <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                <button class="btn btn-primary" id="practiceTab" onclick="showTab('practice')">
+                    <i class="fas fa-rocket"></i> Exercícios Práticos (8)
+                </button>
+                <button class="btn btn-secondary" id="interviewTab" onclick="showTab('interview')">
+                    <i class="fas fa-briefcase"></i> Projetos de Entrevista (12)
+                </button>
+            </div>
+
+            <!-- Practice Projects -->
+            <div id="practiceProjects" class="projects-container">
+                <h2 style="margin-bottom: 2rem; color: var(--dark);">
+                    <i class="fas fa-rocket"></i> Rede Social - Exercícios Práticos
+                </h2>
+                <p style="margin-bottom: 2rem; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+                    Construa uma rede social completa do zero, aprendendo conceitos práticos de backend step-by-step.
+                </p>
+                <div id="practiceGrid" class="features-grid">
+                    <!-- Practice exercises will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Interview Projects -->
+            <div id="interviewProjects" class="projects-container" style="display: none;">
+                <h2 style="margin-bottom: 2rem; color: var(--dark);">
+                    <i class="fas fa-briefcase"></i> Projetos de Entrevista
+                </h2>
+                <p style="margin-bottom: 2rem; color: var(--gray); max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+                    Projetos comuns em entrevistas técnicas de empresas FAANG e startups.
+                </p>
+
+                <!-- Low Level Design -->
+                <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--primary);">
+                    <i class="fas fa-cogs"></i> Low-Level Design
+                </h3>
+                <div id="lowLevelGrid" class="features-grid">
+                    <!-- Low level projects will be loaded here -->
+                </div>
+
+                <!-- High Level Design -->
+                <h3 style="margin-top: 3rem; margin-bottom: 1.5rem; color: var(--secondary);">
+                    <i class="fas fa-sitemap"></i> High-Level Design (System Design)
+                </h3>
+                <div id="highLevelGrid" class="features-grid">
+                    <!-- High level projects will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Project Detail Modal -->
+            <div id="projectModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+                    <div id="projectDetail">
+                        <!-- Project details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Backend Study Repository</h4>
+                    <p>Guia completo do básico ao avançado em Backend Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="modules.html">Módulos</a></li>
+                        <li><a href="projects.html">Projetos</a></li>
+                        <li><a href="progress.html">Progresso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz Interativo</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Feito com <i class="fas fa-heart"></i> para estudantes de Backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Load projects on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProjects();
+        });
+    </script>
+</body>
+</html>

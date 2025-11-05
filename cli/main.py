@@ -13,7 +13,7 @@ from rich import box
 from pathlib import Path
 
 # Import commands
-from cli.commands import modules, projects, progress, quiz, setup
+from cli.commands import modules, projects, progress, quiz, setup, web
 
 app = typer.Typer(
     name="study",
@@ -29,6 +29,7 @@ app.add_typer(projects.app, name="project", help="🚀 Gerenciar projetos práti
 app.add_typer(progress.app, name="progress", help="📊 Tracking de progresso")
 app.add_typer(quiz.app, name="quiz", help="🎯 Testar conhecimento")
 app.add_typer(setup.app, name="setup", help="⚙️  Setup de ambientes")
+app.add_typer(web.app, name="web", help="🌐 Interface web interativa")
 
 
 @app.command()
@@ -54,6 +55,7 @@ Do nível júnior ao sênior
 • [cyan]study progress[/cyan] - Ver progresso
 • [cyan]study quiz[/cyan] - Testar conhecimento
 • [cyan]study setup[/cyan] - Setup de ambiente
+• [cyan]study web[/cyan] - Interface web interativa
 
 Use [cyan]study <comando> --help[/cyan] para mais informações
         """,

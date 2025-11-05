@@ -1,0 +1,150 @@
+{
+  "practice": [
+    {
+      "id": "01",
+      "name": "Setup (Docker, PostgreSQL, Redis)",
+      "description": "Configure o ambiente de desenvolvimento com Docker, PostgreSQL e Redis.",
+      "githubPath": "../projeto-pratico/exercicio-01-setup/"
+    },
+    {
+      "id": "02",
+      "name": "CRUD Usuários",
+      "description": "Implemente operações CRUD completas para gerenciamento de usuários.",
+      "githubPath": "../projeto-pratico/exercicio-02-usuarios/"
+    },
+    {
+      "id": "03",
+      "name": "Autenticação JWT",
+      "description": "Adicione autenticação e autorização usando JWT tokens.",
+      "githubPath": "../projeto-pratico/exercicio-03-autenticacao/"
+    },
+    {
+      "id": "04",
+      "name": "Posts de Texto",
+      "description": "Crie funcionalidade de posts de texto para a rede social.",
+      "githubPath": "../projeto-pratico/exercicio-04-posts-texto/"
+    },
+    {
+      "id": "05",
+      "name": "Posts de Vídeo",
+      "description": "Adicione suporte para upload e streaming de vídeos.",
+      "githubPath": "../projeto-pratico/exercicio-05-posts-video/"
+    },
+    {
+      "id": "06",
+      "name": "Likes e Comentários",
+      "description": "Implemente sistema de likes e comentários nos posts.",
+      "githubPath": "../projeto-pratico/exercicio-06-likes-comentarios/"
+    },
+    {
+      "id": "07",
+      "name": "Timeline e Feed",
+      "description": "Construa timeline personalizada e feed de notícias.",
+      "githubPath": "../projeto-pratico/exercicio-07-timeline-feed/"
+    },
+    {
+      "id": "08",
+      "name": "Notificações Real-time",
+      "description": "Adicione notificações em tempo real usando WebSocket.",
+      "githubPath": "../projeto-pratico/exercicio-08-notificacoes-realtime/"
+    }
+  ],
+  "interview": [
+    {
+      "id": "01",
+      "name": "URL Shortener",
+      "type": "low-level",
+      "description": "Sistema de encurtamento de URLs como bit.ly. Design de hash function, collision handling.",
+      "frequency": "⭐⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/01-url-shortener/"
+    },
+    {
+      "id": "02",
+      "name": "Rate Limiter",
+      "type": "low-level",
+      "description": "Implementação de rate limiter com diferentes algoritmos (token bucket, sliding window).",
+      "frequency": "⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/02-rate-limiter/"
+    },
+    {
+      "id": "03",
+      "name": "LRU Cache",
+      "type": "low-level",
+      "description": "Cache com política LRU usando HashMap + Doubly Linked List.",
+      "frequency": "⭐⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/03-lru-cache/"
+    },
+    {
+      "id": "04",
+      "name": "Distributed Lock",
+      "type": "low-level",
+      "description": "Sistema de lock distribuído usando Redis para coordenação.",
+      "frequency": "⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/04-distributed-lock/"
+    },
+    {
+      "id": "05",
+      "name": "Consistent Hashing",
+      "type": "low-level",
+      "description": "Implementação de consistent hashing para distribuição de dados.",
+      "frequency": "⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/05-consistent-hashing/"
+    },
+    {
+      "id": "06",
+      "name": "Bloom Filter",
+      "type": "low-level",
+      "description": "Estrutura de dados probabilística para membership testing.",
+      "frequency": "⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/06-bloom-filter/"
+    },
+    {
+      "id": "07",
+      "name": "Twitter Clone",
+      "type": "high-level",
+      "description": "Sistema de microblogging em larga escala. Timeline, fanout, caching.",
+      "frequency": "⭐⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/07-twitter-clone/"
+    },
+    {
+      "id": "08",
+      "name": "Uber/Lyft",
+      "type": "high-level",
+      "description": "Sistema de ride-sharing. Geospatial indexing, matching, real-time tracking.",
+      "frequency": "⭐⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/08-uber-lyft/"
+    },
+    {
+      "id": "09",
+      "name": "WhatsApp",
+      "type": "high-level",
+      "description": "Sistema de mensagens em tempo real. WebSocket, message queue, delivery status.",
+      "frequency": "⭐⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/09-whatsapp/"
+    },
+    {
+      "id": "10",
+      "name": "Netflix",
+      "type": "high-level",
+      "description": "Sistema de streaming de vídeo. CDN, adaptive bitrate, recommendations.",
+      "frequency": "⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/10-netflix/"
+    },
+    {
+      "id": "11",
+      "name": "Airbnb",
+      "type": "high-level",
+      "description": "Plataforma de reservas. Search, booking, payments, reviews.",
+      "frequency": "⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/11-airbnb/"
+    },
+    {
+      "id": "12",
+      "name": "Instagram",
+      "type": "high-level",
+      "description": "Rede social de fotos. Feed, stories, direct messages, image processing.",
+      "frequency": "⭐⭐⭐⭐",
+      "githubPath": "../projetos-entrevista/12-instagram/"
+    }
+  ]
+}

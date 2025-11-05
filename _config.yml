@@ -1,0 +1,49 @@
+# GitHub Pages Configuration
+# Backend Study Repository
+
+# Theme
+theme: jekyll-theme-cayman
+
+# Site settings
+title: Backend Study Repository
+description: Guia completo de estudos de backend do júnior ao sênior
+baseurl: ""
+url: ""
+
+# GitHub Pages specific
+plugins:
+  - jekyll-relative-links
+
+# Markdown settings
+markdown: kramdown
+
+# Exclude from processing
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - cli/
+  - projeto-pratico/
+  - projetos-entrevista/
+  - 01-fundamentos/
+  - 02-protocolos/
+  - 03-banco-dados/
+  - 04-arquiteturas/
+  - 05-performance-concorrencia/
+  - 06-filas-streaming/
+  - 07-cloud-high-architecture/
+  - 08-estruturas-dados/
+  - guias/
+
+# Include the docs directory
+include:
+  - docs/
+
+# Collections (optional, for future expansion)
+collections:
+  modules:
+    output: true
+    permalink: /:collection/:name
+  projects:
+    output: true
+    permalink: /:collection/:name
