@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLI Documentation - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .cli-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .command-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .command-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .command-icon {
+            font-size: 40px;
+            margin-right: 15px;
+        }
+
+        .command-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .command-description {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .terminal {
+            background: #1a1a2e;
+            color: #16f4d0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            position: relative;
+            margin: 15px 0;
+        }
+
+        .terminal::before {
+            content: '$ ';
+            color: #f39c12;
+            font-weight: bold;
+        }
+
+        .terminal-multi {
+            background: #1a1a2e;
+            color: #16f4d0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre;
+            margin: 15px 0;
+        }
+
+        .command-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .command-list li {
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #f7f9fc;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            font-family: 'Courier New', monospace;
+            transition: all 0.3s;
+        }
+
+        .command-list li:hover {
+            background: #e8ecf4;
+            transform: translateX(5px);
+        }
+
+        .command-list .cmd {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .command-list .desc {
+            color: #777;
+            margin-left: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-box {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fffbea;
+            border-left: 4px solid #faad14;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #f6ffed;
+            border-left: 4px solid #52c41a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+
+        .quick-nav {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .quick-nav h3 {
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .quick-nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quick-nav li {
+            margin: 8px 0;
+        }
+
+        .quick-nav a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .quick-nav a:hover {
+            color: #764ba2;
+        }
+
+        .example-section {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .example-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html" class="active">CLI</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="cli-container">
+        <h1 style="text-align: center; margin: 40px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            🎓 CLI Documentation
+        </h1>
+
+        <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 50px;">
+            Gerencie seus estudos de backend com nossa CLI interativa e poderosa
+        </p>
+
+        <!-- Quick Installation -->
+        <div class="command-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <div class="command-header" style="color: white;">
+                <div class="command-icon">⚡</div>
+                <div>
+                    <div class="command-title" style="color: white;">Quick Start</div>
+                    <div style="opacity: 0.9;">Comece em 2 minutos</div>
+                </div>
+            </div>
+
+            <div class="terminal-multi" style="background: rgba(0,0,0,0.3); color: #a0eec8;"># Instalar dependências
+pip install -r requirements-cli.txt
+
+# Executar CLI
+./study
+
+# Adicionar ao PATH (opcional)
+echo 'alias study="$PWD/study"' >> ~/.bashrc
+source ~/.bashrc</div>
+
+            <div class="success-box" style="background: rgba(255,255,255,0.2); border-left-color: #52c41a; color: white;">
+                <strong>✓ Pronto!</strong> Agora você pode usar <code style="background: rgba(0,0,0,0.2); padding: 2px 6px; border-radius: 3px;">study</code> de qualquer lugar
+            </div>
+        </div>
+
+        <!-- Features -->
+        <h2 style="text-align: center; margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">✨ Features</h2>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Navegação Interativa</div>
+                <div class="feature-desc">Explore módulos e projetos facilmente</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🚀</div>
+                <div class="feature-title">Execução Rápida</div>
+                <div class="feature-desc">Execute exemplos com um comando</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">Tracking de Progresso</div>
+                <div class="feature-desc">Acompanhe seu aprendizado</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <div class="feature-title">Quiz Interativo</div>
+                <div class="feature-desc">Teste seus conhecimentos</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚙️</div>
+                <div class="feature-title">Setup Automático</div>
+                <div class="feature-desc">Configure ambiente com um comando</div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">Interface Rica</div>
+                <div class="feature-desc">Tabelas, cores e syntax highlighting</div>
+            </div>
+        </div>
+
+        <!-- Commands Tabs -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">📖 Comandos</h2>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('general')">Geral</button>
+            <button class="tab" onclick="showTab('modules')">Módulos</button>
+            <button class="tab" onclick="showTab('projects')">Projetos</button>
+            <button class="tab" onclick="showTab('progress')">Progresso</button>
+            <button class="tab" onclick="showTab('quiz')">Quiz</button>
+            <button class="tab" onclick="showTab('setup')">Setup</button>
+        </div>
+
+        <!-- General Commands -->
+        <div id="general" class="tab-content active">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">ℹ️</div>
+                    <div class="command-title">Informações Gerais</div>
+                </div>
+                <p class="command-description">
+                    Comandos para obter informações sobre o repositório e estatísticas de estudo.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study info</span>
+                        <span class="desc">Ver informações do repositório</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study stats</span>
+                        <span class="desc">Ver estatísticas de estudo</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study roadmap</span>
+                        <span class="desc">Ver roadmap de estudos completo</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study --help</span>
+                        <span class="desc">Ver todos os comandos disponíveis</span>
+                    </li>
+                </ul>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Exemplo de Uso:</div>
+                    <div class="terminal-multi"># Ver informações do repositório
+study info
+
+# Ver estatísticas
+study stats</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Module Commands -->
+        <div id="modules" class="tab-content">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">📚</div>
+                    <div class="command-title">Gerenciar Módulos</div>
+                </div>
+                <p class="command-description">
+                    Navegue, leia e execute exemplos dos módulos teóricos.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study module list</span>
+                        <span class="desc">Listar todos os módulos disponíveis</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study module show 01</span>
+                        <span class="desc">Ver detalhes do módulo 01</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study module read 01</span>
+                        <span class="desc">Ler teoria completa do módulo</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study module examples 01</span>
+                        <span class="desc">Listar exemplos disponíveis</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study module run 01 1</span>
+                        <span class="desc">Executar exemplo 1 do módulo 01</span>
+                    </li>
+                </ul>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Fluxo de Estudo Completo:</div>
+                    <div class="terminal-multi"># 1. Listar módulos
+study module list
+
+# 2. Ver detalhes do módulo 01
+study module show 01
+
+# 3. Ler a teoria
+study module read 01
+
+# 4. Ver exemplos disponíveis
+study module examples 01
+
+# 5. Executar exemplo
+study module run 01 1
+
+# 6. Marcar como concluído
+study progress mark module 01</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Commands -->
+        <div id="projects" class="tab-content">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">🚀</div>
+                    <div class="command-title">Gerenciar Projetos</div>
+                </div>
+                <p class="command-description">
+                    Explore projetos práticos e projetos de entrevista.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study project list</span>
+                        <span class="desc">Listar todos os projetos</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study project list --type practice</span>
+                        <span class="desc">Listar apenas exercícios práticos</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study project list --type interview</span>
+                        <span class="desc">Listar apenas projetos de entrevista</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study project show practice 01</span>
+                        <span class="desc">Ver detalhes do projeto prático 01</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study project show interview 07</span>
+                        <span class="desc">Ver detalhes do projeto de entrevista 07</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study project roadmap</span>
+                        <span class="desc">Ver roadmap de projetos de entrevista</span>
+                    </li>
+                </ul>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Preparação para Entrevistas:</div>
+                    <div class="terminal-multi"># Ver roadmap de entrevistas
+study project roadmap
+
+# Estudar projetos por ordem
+study project show interview 01  # URL Shortener
+study project show interview 03  # LRU Cache
+study project show interview 07  # Twitter Clone
+
+# Listar todos projetos de entrevista
+study project list --type interview</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Commands -->
+        <div id="progress" class="tab-content">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">📊</div>
+                    <div class="command-title">Tracking de Progresso</div>
+                </div>
+                <p class="command-description">
+                    Acompanhe seu progresso de aprendizado e marque itens como concluídos.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study progress show</span>
+                        <span class="desc">Ver seu progresso geral</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study progress mark module 01</span>
+                        <span class="desc">Marcar módulo 01 como concluído</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study progress mark exercise 02</span>
+                        <span class="desc">Marcar exercício 02 como concluído</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study progress mark interview 07</span>
+                        <span class="desc">Marcar projeto de entrevista como concluído</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study progress export</span>
+                        <span class="desc">Exportar progresso para JSON</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study progress reset --yes</span>
+                        <span class="desc">Resetar todo o progresso</span>
+                    </li>
+                </ul>
+
+                <div class="info-box">
+                    <strong>💾 Salvamento:</strong> Seu progresso é salvo localmente em <code>~/.backend_study_progress.json</code>
+                </div>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Tracking Diário:</div>
+                    <div class="terminal-multi"># Iniciar dia de estudos
+study progress show
+
+# Estudar e marcar progresso
+study module run 01 1
+study progress mark module 01
+
+# Ver estatísticas ao final do dia
+study stats</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Commands -->
+        <div id="quiz" class="tab-content">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">🎯</div>
+                    <div class="command-title">Quiz Interativo</div>
+                </div>
+                <p class="command-description">
+                    Teste seus conhecimentos com quizzes interativos de múltipla escolha.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study quiz start</span>
+                        <span class="desc">Iniciar quiz aleatório com 5 questões</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study quiz start --topic fundamentos</span>
+                        <span class="desc">Quiz específico de fundamentos</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study quiz start --topic database</span>
+                        <span class="desc">Quiz de banco de dados</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study quiz start --topic system_design</span>
+                        <span class="desc">Quiz de system design</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study quiz start --num-questions 10</span>
+                        <span class="desc">Quiz com 10 questões</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study quiz topics</span>
+                        <span class="desc">Listar todos os tópicos disponíveis</span>
+                    </li>
+                </ul>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Testes de Conhecimento:</div>
+                    <div class="terminal-multi"># Ver tópicos disponíveis
+study quiz topics
+
+# Quiz rápido (5 questões)
+study quiz start
+
+# Quiz completo de database
+study quiz start --topic database --num-questions 10
+
+# Quiz de system design para entrevistas
+study quiz start --topic system_design</div>
+                </div>
+
+                <div class="success-box">
+                    <strong>✓ Feedback Imediato:</strong> Receba explicações detalhadas para cada resposta!
+                </div>
+            </div>
+        </div>
+
+        <!-- Setup Commands -->
+        <div id="setup" class="tab-content">
+            <div class="command-card">
+                <div class="command-header">
+                    <div class="command-icon">⚙️</div>
+                    <div class="command-title">Setup de Ambiente</div>
+                </div>
+                <p class="command-description">
+                    Configure seu ambiente de desenvolvimento automaticamente.
+                </p>
+
+                <ul class="command-list">
+                    <li>
+                        <span class="cmd">study setup check</span>
+                        <span class="desc">Verificar dependências instaladas</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study setup install</span>
+                        <span class="desc">Instalar dependências Python</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study setup docker</span>
+                        <span class="desc">Criar docker-compose.yml</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study setup env</span>
+                        <span class="desc">Criar arquivo .env</span>
+                    </li>
+                    <li>
+                        <span class="cmd">study setup project</span>
+                        <span class="desc">Setup completo (recomendado)</span>
+                    </li>
+                </ul>
+
+                <div class="example-section">
+                    <div class="example-title">💡 Setup Inicial:</div>
+                    <div class="terminal-multi"># Opção 1: Setup completo (recomendado)
+study setup project
+
+# Opção 2: Passo a passo
+study setup check          # Verificar dependências
+study setup docker         # Criar docker-compose.yml
+study setup env            # Criar .env
+docker-compose up -d       # Iniciar containers</div>
+                </div>
+
+                <div class="warning-box">
+                    <strong>⚠️ Docker:</strong> Certifique-se de que o Docker está rodando antes de executar estes comandos!
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Examples -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">🎯 Casos de Uso</h2>
+
+        <div class="command-card">
+            <h3 style="color: #667eea; margin-bottom: 15px;">👨‍💻 Para Iniciantes</h3>
+            <div class="terminal-multi"># 1. Setup completo
+study setup project
+
+# 2. Ver roadmap de estudos
+study roadmap
+
+# 3. Começar pelo módulo 01
+study module read 01
+study module run 01 1
+
+# 4. Praticar com quiz
+study quiz start --topic fundamentos
+
+# 5. Acompanhar progresso
+study progress show</div>
+        </div>
+
+        <div class="command-card">
+            <h3 style="color: #667eea; margin-bottom: 15px;">🎤 Para Preparação de Entrevistas</h3>
+            <div class="terminal-multi"># 1. Ver roadmap de entrevistas
+study project roadmap
+
+# 2. Estudar projetos por frequência
+study project show interview 01  # URL Shortener (Alta frequência)
+study project show interview 03  # LRU Cache
+study project show interview 07  # Twitter Clone
+
+# 3. Quiz de system design
+study quiz start --topic system_design --num-questions 10
+
+# 4. Tracking de progresso
+study progress mark interview 01
+study progress show</div>
+        </div>
+
+        <div class="command-card">
+            <h3 style="color: #667eea; margin-bottom: 15px;">💪 Para Prática Hands-on</h3>
+            <div class="terminal-multi"># 1. Setup ambiente
+study setup project
+
+# 2. Executar exemplos de cada módulo
+study module run 01 1  # Fundamentos
+study module run 02 1  # Protocolos
+study module run 03 1  # Banco de dados
+study module run 04 1  # Arquiteturas
+study module run 05 1  # Performance
+study module run 06 1  # Filas
+study module run 07 1  # Cloud
+study module run 08 1  # Estruturas de dados
+
+# 3. Marcar progresso
+study progress mark module 01</div>
+        </div>
+
+        <!-- Troubleshooting -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">🐛 Troubleshooting</h2>
+
+        <div class="command-card">
+            <h3 style="color: #e74c3c; margin-bottom: 15px;">Erro: "Module not found"</h3>
+            <div class="terminal-multi"># Certifique-se de executar do diretório raiz
+cd /caminho/para/backend
+
+# Ou adicione ao PYTHONPATH
+export PYTHONPATH=$PYTHONPATH:$PWD</div>
+        </div>
+
+        <div class="command-card">
+            <h3 style="color: #e74c3c; margin-bottom: 15px;">Erro: "Permission denied"</h3>
+            <div class="terminal-multi"># Torne o script executável
+chmod +x study</div>
+        </div>
+
+        <div class="command-card">
+            <h3 style="color: #e74c3c; margin-bottom: 15px;">Docker não inicia</h3>
+            <div class="terminal-multi"># Verificar se Docker está rodando
+docker ps
+
+# Iniciar Docker
+sudo systemctl start docker
+
+# Verificar logs
+docker-compose logs</div>
+        </div>
+
+        <!-- Help -->
+        <div class="command-card" style="background: #f7f9fc; border-left-color: #52c41a;">
+            <h3 style="color: #52c41a; margin-bottom: 15px;">📚 Precisa de Ajuda?</h3>
+            <p style="margin-bottom: 15px;">Todos os comandos têm help integrado:</p>
+
+            <div class="terminal-multi"># Help geral
+study --help
+
+# Help de um comando
+study module --help
+study project --help
+study progress --help
+study quiz --help
+study setup --help
+
+# Help de um subcomando
+study module list --help
+study quiz start --help</div>
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Desenvolvido com 💜 para ajudar desenvolvedores a crescerem</p>
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/samueldk12/backend" style="color: white; margin: 0 10px;" target="_blank">GitHub</a>
+            <a href="index.html" style="color: white; margin: 0 10px;">Home</a>
+            <a href="getting-started.html" style="color: white; margin: 0 10px;">Getting Started</a>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Copy to clipboard functionality
+        document.querySelectorAll('.terminal, .terminal-multi').forEach(terminal => {
+            terminal.style.position = 'relative';
+
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.textContent = 'Copy';
+            button.onclick = () => {
+                const text = terminal.textContent.replace(/^\$ /, '').replace('Copy', '').trim();
+                navigator.clipboard.writeText(text);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            };
+
+            terminal.appendChild(button);
+        });
+    </script>
+</body>
+</html>
