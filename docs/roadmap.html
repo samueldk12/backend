@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Detalhado - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-code"></i>
+                Backend Study
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html" class="active">Roadmap</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section style="padding: 3rem 0; background: var(--gradient);">
+        <div class="container">
+            <h1 style="color: var(--white); text-align: center; font-size: 3rem; margin-bottom: 1rem;">
+                <i class="fas fa-map"></i> Roadmap Completo
+            </h1>
+            <p style="color: var(--white); text-align: center; font-size: 1.25rem; opacity: 0.9;">
+                Seu guia passo-a-passo para dominar Backend Development em 12 semanas
+            </p>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section style="padding: 3rem 0;">
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <h2 style="margin-bottom: 2rem;">📋 Visão Geral</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                        <div>
+                            <h3 style="color: var(--primary);">⏱️ Duração</h3>
+                            <p>12 semanas (3 meses)</p>
+                            <p style="color: var(--gray); font-size: 0.9rem;">2-3 horas/dia</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary);">🎯 Objetivo</h3>
+                            <p>Passar em entrevistas de backend</p>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Senior Level (FAANG)</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary);">📚 Conteúdo</h3>
+                            <p>8 módulos + 20 projetos</p>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Teoria + Prática</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary);">✅ Resultado</h3>
+                            <p>Portfólio completo</p>
+                            <p style="color: var(--gray); font-size: 0.9rem;">Pronto para entrevistas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Roadmap -->
+    <section style="padding: 3rem 0; background: var(--gray-lighter);">
+        <div class="container">
+            <h2 class="section-title">Roadmap Detalhado</h2>
+
+            <!-- Week 1-2 -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>🎯 Semanas 1-2: Fundamentos de Backend</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 01: Fundamentos</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ CPU-Bound vs I/O-Bound operations</li>
+                        <li>✅ Stack vs Heap memory</li>
+                        <li>✅ Threads vs Processes</li>
+                        <li>✅ Global Interpreter Lock (GIL)</li>
+                        <li>✅ Async/Await e Event Loop</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">📝 Exercícios Práticos</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>▶️ Comparar sync vs async vs threading (performance)</li>
+                        <li>▶️ Medir impacto do GIL em CPU-bound tasks</li>
+                        <li>▶️ Implementar worker pool com multiprocessing</li>
+                    </ul>
+
+                    <h3 style="color: var(--warning); margin-bottom: 1rem;">🎯 Meta da Semana</h3>
+                    <div class="progress-bar" style="margin-bottom: 0.5rem;">
+                        <div class="progress-fill" style="width: 100%;"></div>
+                    </div>
+                    <p style="color: var(--gray);">Entender quando usar threads, processes e async</p>
+                </div>
+            </div>
+
+            <!-- Week 3-4 -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>🌐 Semanas 3-4: Protocolos e Banco de Dados</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 02: Protocolos</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ REST API (HTTP methods, status codes)</li>
+                        <li>✅ GraphQL (queries, mutations, subscriptions)</li>
+                        <li>✅ gRPC (Protocol Buffers, streaming)</li>
+                        <li>✅ WebSocket (real-time communication)</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 03: Banco de Dados</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ SQL vs NoSQL (quando usar cada um)</li>
+                        <li>✅ Indexes (B-Tree, Hash, Composite)</li>
+                        <li>✅ Transactions e ACID</li>
+                        <li>✅ N+1 problem e soluções</li>
+                        <li>✅ Connection pooling</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">🚀 Projeto: Setup</h3>
+                    <p>Configurar ambiente completo: Docker, PostgreSQL, Redis, FastAPI</p>
+                </div>
+            </div>
+
+            <!-- Week 5-6 -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>🏗️ Semanas 5-6: Arquitetura e Performance</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 04: Arquiteturas</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ Monolith vs Microservices</li>
+                        <li>✅ Clean Architecture</li>
+                        <li>✅ Domain-Driven Design (DDD)</li>
+                        <li>✅ Event-Driven Architecture</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 05: Performance</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ Caching strategies (Cache-Aside, Write-Through)</li>
+                        <li>✅ Load Balancing (Round Robin, Least Connections)</li>
+                        <li>✅ Rate Limiting (Token Bucket, Sliding Window)</li>
+                        <li>✅ Profiling e optimization</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">🚀 Projetos</h3>
+                    <ul style="line-height: 2;">
+                        <li>▶️ CRUD de usuários com FastAPI + PostgreSQL</li>
+                        <li>▶️ Autenticação JWT com refresh tokens</li>
+                        <li>▶️ Sistema de posts com upload de imagens</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 7-8 -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>⚙️ Semanas 7-8: Filas, Streaming e Cloud</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 06: Filas e Streaming</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ Message Queues (RabbitMQ, Redis)</li>
+                        <li>✅ Celery (tasks assíncronas)</li>
+                        <li>✅ Kafka (streaming, producer/consumer)</li>
+                        <li>✅ Saga Pattern (transações distribuídas)</li>
+                    </ul>
+
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 07: Cloud</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ Observability (Logs, Metrics, Traces)</li>
+                        <li>✅ Distributed Tracing (Jaeger, Zipkin)</li>
+                        <li>✅ Service Discovery, Circuit Breaker</li>
+                        <li>✅ CAP Theorem</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">💼 Projetos de Entrevista (Low-Level)</h3>
+                    <ul style="line-height: 2;">
+                        <li>⭐ URL Shortener (hashing, collision)</li>
+                        <li>⭐ Rate Limiter (token bucket)</li>
+                        <li>⭐ LRU Cache (HashMap + DLL)</li>
+                        <li>⭐ Distributed Lock (Redis)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 9-10 -->
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>📊 Semanas 9-10: Estruturas de Dados e System Design</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Módulo 08: Estruturas de Dados</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>✅ Hash Tables (cache, sessions)</li>
+                        <li>✅ B-Tree / LSM Tree (database indexes)</li>
+                        <li>✅ Graphs (social network, routing)</li>
+                        <li>✅ Heaps (priority queue, task scheduling)</li>
+                        <li>✅ Tries (autocomplete, IP routing)</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">💼 Projetos de Entrevista (High-Level)</h3>
+                    <ul style="line-height: 2;">
+                        <li>⭐⭐⭐ Twitter Clone (timeline, fanout, caching)</li>
+                        <li>⭐⭐⭐ Uber/Lyft (geospatial, matching, tracking)</li>
+                        <li>⭐⭐⭐ WhatsApp (WebSocket, message queue, delivery)</li>
+                        <li>⭐⭐⭐ Netflix (CDN, adaptive bitrate, recommendations)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 11-12 -->
+            <div class="card">
+                <div class="card-header" style="background: var(--gradient); color: var(--white);">
+                    <h2>🎯 Semanas 11-12: Revisão e Mock Interviews</h2>
+                </div>
+                <div class="card-body">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Revisão Completa</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>📚 Revisar todos os 8 módulos</li>
+                        <li>📝 Refazer exemplos práticos</li>
+                        <li>🎯 Completar todos os 20 projetos</li>
+                        <li>✅ Fazer todos os quizzes (>80%)</li>
+                    </ul>
+
+                    <h3 style="color: var(--success); margin-bottom: 1rem;">Mock Interviews</h3>
+                    <ul style="margin-bottom: 2rem; line-height: 2;">
+                        <li>🎤 10+ mock interviews práticas</li>
+                        <li>⏱️ Praticar com timer (45 min)</li>
+                        <li>🗣️ Explicar decisões de design</li>
+                        <li>📊 Trade-offs e escolhas arquiteturais</li>
+                    </ul>
+
+                    <h3 style="color: var(--warning); margin-bottom: 1rem;">✅ Checklist Final</h3>
+                    <div style="background: var(--gray-lighter); padding: 1.5rem; border-radius: var(--radius);">
+                        <label style="display: block; margin-bottom: 0.5rem;">
+                            <input type="checkbox"> Completei todos os 8 módulos teóricos
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem;">
+                            <input type="checkbox"> Completei todos os 8 exercícios práticos
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem;">
+                            <input type="checkbox"> Completei os 6 projetos de Low-Level Design
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem;">
+                            <input type="checkbox"> Completei os 6 projetos de High-Level Design
+                        </label>
+                        <label style="display: block; margin-bottom: 0.5rem;">
+                            <input type="checkbox"> Fiz pelo menos 10 mock interviews
+                        </label>
+                        <label style="display: block;">
+                            <input type="checkbox"> Consigo explicar trade-offs de cada decisão
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section style="padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title">💡 Dicas de Estudo</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--primary);"><i class="fas fa-calendar"></i> Consistência</h3>
+                        <p>Estude 2-3 horas TODOS OS DIAS. É melhor 2h/dia do que 14h no fim de semana.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--success);"><i class="fas fa-hands-helping"></i> Prática</h3>
+                        <p>70% prática, 30% teoria. Implemente TUDO, não apenas leia.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--warning);"><i class="fas fa-book-reader"></i> Revisão</h3>
+                        <p>Revise conceitos antigos a cada 3 dias. Spaced repetition funciona!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--danger);"><i class="fas fa-comments"></i> Explique</h3>
+                        <p>Se não consegue explicar em voz alta, você não entendeu de verdade.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para começar sua jornada?</h2>
+            <p>Comece agora e em 12 semanas você estará pronto para qualquer entrevista de backend!</p>
+            <a href="modules.html" class="btn btn-primary btn-large">
+                <i class="fas fa-rocket"></i> Começar Semana 1
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Backend Study Repository</h4>
+                    <p>Guia completo do básico ao avançado em Backend Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                        <li><a href="projects.html">Projetos</a></li>
+                        <li><a href="progress.html">Progresso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz Interativo</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="https://github.com">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Feito com <i class="fas fa-heart"></i> para estudantes de Backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .interview-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .framework-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .framework-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .framework-icon {
+            font-size: 50px;
+            margin-right: 20px;
+        }
+
+        .framework-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .framework-subtitle {
+            color: #777;
+            margin-top: 5px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-week {
+            font-size: 18px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            color: #555;
+        }
+
+        .timeline-goals {
+            list-style: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+
+        .timeline-goals li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .timeline-goals li::before {
+            content: '□';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 18px;
+        }
+
+        .pattern-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .pattern-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .pattern-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .pattern-table tr:hover {
+            background: #f7f9fc;
+        }
+
+        .priority-stars {
+            color: #f39c12;
+            font-size: 18px;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #68d391;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+            white-space: pre;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 16px;
+            font-weight: 600;
+            color: #777;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .info-box {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .success-box {
+            background: #f6ffed;
+            border-left: 4px solid #52c41a;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #fffbea;
+            border-left: 4px solid #faad14;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        .project-frequency {
+            color: #f39c12;
+        }
+
+        .project-time {
+            color: #667eea;
+        }
+
+        .project-concepts {
+            color: #777;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .checklist {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .checklist-item {
+            padding: 12px;
+            background: white;
+            margin: 8px 0;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checklist-item:hover {
+            background: #e8ecf4;
+            transform: translateX(5px);
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html" class="active">Entrevistas</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="interview-container">
+        <h1 style="text-align: center; margin: 40px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            🎯 Interview Preparation
+        </h1>
+
+        <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 50px;">
+            Guia completo para conquistar sua vaga como Backend Engineer
+        </p>
+
+        <!-- Interview Types -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">🎓 Tipos de Entrevistas</h2>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Coding (Algoritmos)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20%</div>
+                <div class="stat-label">Low-Level Design</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">30%</div>
+                <div class="stat-label">High-Level Design</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10%</div>
+                <div class="stat-label">Behavioral</div>
+            </div>
+        </div>
+
+        <!-- Frameworks -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">🧠 Frameworks de Abordagem</h2>
+
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('umpire')">UMPIRE (Coding)</button>
+            <button class="tab" onclick="showTab('snake')">SNAKE (System Design)</button>
+            <button class="tab" onclick="showTab('star')">STAR (Behavioral)</button>
+        </div>
+
+        <!-- UMPIRE Framework -->
+        <div id="umpire" class="tab-content active">
+            <div class="framework-card">
+                <div class="framework-header">
+                    <div class="framework-icon">🎯</div>
+                    <div>
+                        <div class="framework-title">Framework UMPIRE</div>
+                        <div class="framework-subtitle">Para resolver problemas de Coding/Algoritmos</div>
+                    </div>
+                </div>
+
+                <div class="code-example">U - Understand (Entender o problema)
+M - Match (Identificar padrão)
+P - Plan (Planejar solução)
+I - Implement (Implementar)
+R - Review (Revisar edge cases)
+E - Evaluate (Avaliar complexidade)</div>
+
+                <h3 style="margin: 30px 0 15px; color: #2c3e50;">💡 Exemplo Prático: Encontrar Duplicatas</h3>
+
+                <div class="code-example"># Problema: Encontrar elementos duplicados em array
+# Input: [1,2,3,2,4,5,1]
+# Output: [1,2]
+
+U - Understand:
+  ✓ Input: array de inteiros
+  ✓ Output: lista de duplicatas
+  ✓ Perguntas:
+    - Array pode estar vazio? → Sim, retornar []
+    - Números sempre positivos? → Sim
+    - Ordenar output? → Não necessário
+
+M - Match:
+  ✓ Padrão: Hash Table (set)
+  ✓ Similar a: Two Sum, Contains Duplicate
+
+P - Plan:
+  1. Criar set para elementos vistos
+  2. Criar set para duplicatas
+  3. Iterar array:
+     - Se elemento em vistos → adicionar em duplicatas
+     - Senão → adicionar em vistos
+  4. Retornar list(duplicatas)
+
+I - Implement:
+  def find_duplicates(nums):
+      seen = set()
+      duplicates = set()
+
+      for num in nums:
+          if num in seen:
+              duplicates.add(num)
+          else:
+              seen.add(num)
+
+      return list(duplicates)
+
+R - Review:
+  ✓ Edge cases:
+    - Array vazio → []
+    - Sem duplicatas → []
+    - Todos duplicados → [1,2,3,...]
+
+E - Evaluate:
+  ✓ Time: O(n) - iterar array uma vez
+  ✓ Space: O(n) - sets podem ter até n elementos</div>
+            </div>
+        </div>
+
+        <!-- SNAKE Framework -->
+        <div id="snake" class="tab-content">
+            <div class="framework-card">
+                <div class="framework-header">
+                    <div class="framework-icon">🏗️</div>
+                    <div>
+                        <div class="framework-title">Framework SNAKE</div>
+                        <div class="framework-subtitle">Para System Design High-Level</div>
+                    </div>
+                </div>
+
+                <div class="code-example">S - Scope (Definir escopo) - 5 minutos
+N - Numbers (Estimativas de escala) - 5 minutos
+A - Architecture (Desenhar arquitetura) - 10 minutos
+K - Key Components (Detalhar componentes) - 20 minutos
+E - Extensions (Melhorias e trade-offs) - 10 minutos</div>
+
+                <h3 style="margin: 30px 0 15px; color: #2c3e50;">💡 Exemplo: Design do Twitter</h3>
+
+                <div class="code-example">S - Scope (5 minutos):
+  ✓ Funcionalidades: Post tweets, Timeline, Follow
+  ✓ NÃO incluir: DMs, Trends, Ads
+  ✓ Perguntas:
+    - Quantos usuários? → 500M MAU
+    - Read-heavy ou write-heavy? → Read-heavy
+    - Consistência forte? → Eventual é ok
+
+N - Numbers (5 minutos):
+  ✓ Usuários: 500M ativos/mês, 150M ativos/dia
+  ✓ Tweets: 200M/dia = 2.3k/s (write)
+  ✓ Timeline views: 100B/dia = 1.1M/s (read)
+  ✓ Ratio read/write: 500:1 (READ-HEAVY!)
+  ✓ Storage: 200M * 300 bytes * 365 * 5 = 109TB
+
+A - Architecture (10 minutos):
+  [Client] → [Load Balancer] → [API Servers]
+                  ↓
+      ┌───────────┼───────────┐
+      ↓           ↓           ↓
+  [User]      [Tweet]    [Timeline]
+  Service     Service     Service
+      ↓           ↓           ↓
+  PostgreSQL  Cassandra  Redis Cache
+  (users)     (tweets)   (timelines)
+
+K - Key Components (20 minutos):
+  ✓ Post Tweet:
+    - Salvar em Cassandra
+    - Fanout: Push (< 5k followers) ou Pull (> 5k)
+
+  ✓ Timeline:
+    - Cache pré-computado (push)
+    - Fetch celebridades (pull)
+    - Merge + sort + cache 5min
+
+  ✓ Databases:
+    - PostgreSQL: Users, Follows
+    - Cassandra: Tweets (time-series)
+
+  ✓ Cache:
+    - Redis: Timeline (5 min TTL)
+
+E - Extensions (10 minutos):
+  ✓ Escalar 10x?
+    - Shard Cassandra por user_id
+    - Multiple Redis clusters
+    - CDN para static assets
+
+  ✓ Melhorar latência?
+    - Edge servers
+    - Prefetch next page
+    - WebSocket para real-time
+
+  ✓ Trade-offs:
+    - Push vs Pull: Latência vs Storage
+    - Strong vs Eventual consistency</div>
+            </div>
+        </div>
+
+        <!-- STAR Framework -->
+        <div id="star" class="tab-content">
+            <div class="framework-card">
+                <div class="framework-header">
+                    <div class="framework-icon">⭐</div>
+                    <div>
+                        <div class="framework-title">Framework STAR</div>
+                        <div class="framework-subtitle">Para Behavioral Interviews</div>
+                    </div>
+                </div>
+
+                <div class="code-example">S - Situation (Situação)
+T - Task (Tarefa)
+A - Action (Ação que você tomou)
+R - Result (Resultado mensurável)</div>
+
+                <h3 style="margin: 30px 0 15px; color: #2c3e50;">💡 Exemplo de Resposta STAR</h3>
+
+                <div class="info-box">
+                    <strong>Pergunta:</strong> "Conte sobre um projeto desafiador que você liderou"
+                </div>
+
+                <div class="code-example">S - Situation:
+  "Na empresa X, nosso sistema de pagamentos estava tendo
+  timeouts frequentes, causando 5% de falhas nas transações."
+
+T - Task:
+  "Fui designado para investigar e resolver o problema em 2 semanas,
+  antes do Black Friday."
+
+A - Action:
+  "Implementei três soluções:
+  1. Adicionei connection pooling (reduzindo latência em 40%)
+  2. Implementei circuit breaker para falhas
+  3. Adicionei retry com exponential backoff"
+
+R - Result:
+  "Taxa de falha caiu de 5% para 0.1%, salvando $500k/mês em
+  transações perdidas. Sistema aguentou Black Friday com 10x
+  mais tráfego sem problemas."</div>
+            </div>
+        </div>
+
+        <!-- Common Patterns -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">📊 Padrões de Coding (80% dos Problemas)</h2>
+
+        <table class="pattern-table">
+            <thead>
+                <tr>
+                    <th>Padrão</th>
+                    <th>Quando Usar</th>
+                    <th>Complexidade</th>
+                    <th>Exemplo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Two Pointers</strong></td>
+                    <td>Array ordenado, palindrome</td>
+                    <td>O(n)</td>
+                    <td>Valid Palindrome</td>
+                </tr>
+                <tr>
+                    <td><strong>Sliding Window</strong></td>
+                    <td>Substring, subarray contíguo</td>
+                    <td>O(n)</td>
+                    <td>Longest Substring</td>
+                </tr>
+                <tr>
+                    <td><strong>Hash Table</strong></td>
+                    <td>Lookup rápido, contagem</td>
+                    <td>O(n)</td>
+                    <td>Two Sum</td>
+                </tr>
+                <tr>
+                    <td><strong>Binary Search</strong></td>
+                    <td>Array ordenado, busca</td>
+                    <td>O(log n)</td>
+                    <td>Search Insert Position</td>
+                </tr>
+                <tr>
+                    <td><strong>BFS/DFS</strong></td>
+                    <td>Tree, graph traversal</td>
+                    <td>O(V+E)</td>
+                    <td>Binary Tree Level Order</td>
+                </tr>
+                <tr>
+                    <td><strong>Dynamic Programming</strong></td>
+                    <td>Otimização, combinações</td>
+                    <td>O(n²)</td>
+                    <td>Coin Change</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Study Timeline -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">📅 Cronograma de Estudo (8-12 Semanas)</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 1-2: Fundamentos</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Dominar estruturas de dados essenciais
+                    <ul class="timeline-goals">
+                        <li>Arrays & Strings (20 problemas)</li>
+                        <li>Hash Tables (15 problemas)</li>
+                        <li>Linked Lists (10 problemas)</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 45 problemas resolvidos
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 3-4: Estruturas Intermediárias</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Stacks, Queues, Trees
+                    <ul class="timeline-goals">
+                        <li>Stacks & Queues (15 problemas)</li>
+                        <li>Binary Trees (20 problemas)</li>
+                        <li>BST (10 problemas)</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 45 problemas (total: 90)
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 5-6: Algoritmos Avançados</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Graphs, Dynamic Programming
+                    <ul class="timeline-goals">
+                        <li>Graphs - DFS, BFS, Dijkstra (20 problemas)</li>
+                        <li>Dynamic Programming (15 problemas)</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 35 problemas (total: 125)
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 7-8: System Design (Low-Level)</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Implementações práticas
+                    <ul class="timeline-goals">
+                        <li>URL Shortener</li>
+                        <li>LRU Cache</li>
+                        <li>Rate Limiter</li>
+                        <li>Distributed Lock</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 4 projetos implementados
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 9-10: System Design (High-Level)</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Arquitetura de sistemas distribuídos
+                    <ul class="timeline-goals">
+                        <li>Twitter Clone</li>
+                        <li>Uber/Lyft</li>
+                        <li>WhatsApp</li>
+                        <li>Netflix ou Instagram</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 4 system designs dominados
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-week">Semanas 11-12: Mock Interviews</div>
+                <div class="timeline-content">
+                    <strong>Objetivo:</strong> Praticar em condições reais
+                    <ul class="timeline-goals">
+                        <li>5 mock coding interviews (LeetCode/Pramp)</li>
+                        <li>2 mock system design (Exponent.com)</li>
+                        <li>Revisar problemas errados</li>
+                        <li>Descansar 2 dias antes da entrevista</li>
+                    </ul>
+                    <div class="success-box" style="margin-top: 15px;">
+                        <strong>Meta:</strong> 10+ mock interviews
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Essential Projects -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">🚀 Projetos Essenciais</h2>
+
+        <h3 style="margin: 30px 0 15px; color: #667eea;">Low-Level Design</h3>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-title">LRU Cache</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 4 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> HashMap + DLL, O(1) operations
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">URL Shortener</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 4 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> Hashing, Base62, Sharding
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Rate Limiter</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 3 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> Token Bucket, Redis, Lua
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Distributed Lock</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 3 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> Redis, Atomicity, TTL
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Consistent Hashing</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 3 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> Geohash, Virtual Nodes
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Bloom Filter</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐</span>
+                    <span class="project-time">⏱️ 2 horas</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Conceitos:</strong> Bit Array, Hash Functions
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin: 30px 0 15px; color: #667eea;">High-Level Design</h3>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-title">Twitter Clone</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Hybrid Fanout (Push/Pull)<br>
+                    <strong>Foco:</strong> Timeline generation, scaling reads
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Uber/Lyft</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Geospatial Indexing<br>
+                    <strong>Foco:</strong> Geohash, Matching algorithm
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">WhatsApp</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Real-time Messaging<br>
+                    <strong>Foco:</strong> WebSocket, Delivery guarantees
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Netflix</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Content Delivery<br>
+                    <strong>Foco:</strong> CDN, Adaptive bitrate
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Airbnb</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Booking System<br>
+                    <strong>Foco:</strong> ACID, Distributed locks
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">Instagram</div>
+                <div class="project-meta">
+                    <span class="project-frequency priority-stars">⭐⭐⭐</span>
+                </div>
+                <div class="project-concepts">
+                    <strong>Padrão:</strong> Social Feed<br>
+                    <strong>Foco:</strong> ML ranking, Image CDN
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Checklist -->
+        <h2 style="margin: 50px 0 30px; font-size: 32px; color: #2c3e50;">✅ Checklist Final (1 Semana Antes)</h2>
+
+        <div class="checklist">
+            <label class="checklist-item">
+                <input type="checkbox"> Revisei os 12 projetos de entrevista
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Fiz 5+ mock coding interviews
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Fiz 2+ mock system design interviews
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Pratiquei explicar soluções em voz alta
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Revisei os padrões mais comuns (Two Pointers, Sliding Window, etc)
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Preparei perguntas para fazer ao entrevistador
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Revisei projetos do meu currículo com STAR method
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Estudei a empresa e seus produtos
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Testei equipamento (câmera, microfone, internet)
+            </label>
+            <label class="checklist-item">
+                <input type="checkbox"> Descansando bem 2 dias antes da entrevista
+            </label>
+        </div>
+
+        <!-- Tips -->
+        <div class="framework-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-left: none;">
+            <h2 style="color: white; margin-bottom: 20px;">💡 Dicas de Ouro</h2>
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Pense em voz alta</strong> - Entrevistador quer ver seu raciocínio
+                </li>
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Faça perguntas</strong> - Não assuma requisitos
+                </li>
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Comece simples</strong> - Brute force primeiro, otimize depois
+                </li>
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Teste edge cases</strong> - Empty input, null, grandes volumes
+                </li>
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Discuta trade-offs</strong> - Não existe solução perfeita
+                </li>
+                <li style="padding: 10px 0; padding-left: 25px; position: relative;">
+                    <span style="position: absolute; left: 0;">✓</span>
+                    <strong>Mantenha calma</strong> - Mostrar como você lida com pressão é importante
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Desenvolvido com 💜 para ajudar desenvolvedores a crescerem</p>
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/samueldk12/backend" style="color: white; margin: 0 10px;" target="_blank">GitHub</a>
+            <a href="index.html" style="color: white; margin: 0 10px;">Home</a>
+            <a href="getting-started.html" style="color: white; margin: 0 10px;">Getting Started</a>
+            <a href="projects.html" style="color: white; margin: 0 10px;">Ver Projetos</a>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+
+        // Save checklist state to localStorage
+        document.querySelectorAll('.checklist-item input').forEach(checkbox => {
+            const key = checkbox.parentElement.textContent.trim();
+            checkbox.checked = localStorage.getItem(key) === 'true';
+
+            checkbox.addEventListener('change', function() {
+                localStorage.setItem(key, this.checked);
+            });
+        });
+    </script>
+</body>
+</html>

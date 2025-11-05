@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recursos e Guias - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="fas fa-code"></i>
+                Backend Study
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html" class="active">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+            </ul>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section style="padding: 3rem 0; background: var(--gradient);">
+        <div class="container">
+            <h1 style="color: var(--white); text-align: center; font-size: 3rem; margin-bottom: 1rem;">
+                <i class="fas fa-book-open"></i> Recursos e Guias
+            </h1>
+            <p style="color: var(--white); text-align: center; font-size: 1.25rem; opacity: 0.9;">
+                Materiais complementares, links úteis e guias de estudo
+            </p>
+        </div>
+    </section>
+
+    <!-- Learning Resources -->
+    <section style="padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title">📚 Materiais de Estudo</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- Books -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-book"></i> Livros Recomendados</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul style="line-height: 2;">
+                            <li><strong>Designing Data-Intensive Applications</strong> - Martin Kleppmann</li>
+                            <li><strong>System Design Interview</strong> - Alex Xu (Volumes 1 & 2)</li>
+                            <li><strong>Clean Architecture</strong> - Robert C. Martin</li>
+                            <li><strong>Database Internals</strong> - Alex Petrov</li>
+                            <li><strong>High Performance MySQL</strong> - Baron Schwartz</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Online Courses -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-graduation-cap"></i> Cursos Online</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul style="line-height: 2;">
+                            <li><strong>Grokking the System Design Interview</strong> - Educative</li>
+                            <li><strong>MIT 6.824: Distributed Systems</strong> - MIT OpenCourseWare</li>
+                            <li><strong>CS75: Scalability</strong> - Harvard</li>
+                            <li><strong>Microservices Patterns</strong> - Udemy/Coursera</li>
+                            <li><strong>Database Fundamentals</strong> - CMU 15-445</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- YouTube Channels -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fab fa-youtube"></i> Canais do YouTube</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul style="line-height: 2;">
+                            <li><strong>Hussein Nasser</strong> - Backend Engineering</li>
+                            <li><strong>Tech Dummies</strong> - System Design</li>
+                            <li><strong>ByteByteGo</strong> - System Design</li>
+                            <li><strong>Martin Kleppmann</strong> - Distributed Systems</li>
+                            <li><strong>Gaurav Sen</strong> - System Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Technologies -->
+    <section style="padding: 3rem 0; background: var(--gray-lighter);">
+        <div class="container">
+            <h2 class="section-title">🛠️ Ferramentas e Tecnologias</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Development Tools -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-tools"></i> Ferramentas de Desenvolvimento</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">IDEs & Editores</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li>VS Code + Python Extension</li>
+                            <li>PyCharm Professional</li>
+                            <li>Vim/Neovim (para ninjas)</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Terminal</h4>
+                        <ul style="line-height: 2;">
+                            <li>iTerm2 (Mac) / Windows Terminal</li>
+                            <li>Oh My Zsh / Fish Shell</li>
+                            <li>tmux para multiplexing</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Database Tools -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-database"></i> Ferramentas de Database</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">GUI Clients</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li>DBeaver (Universal)</li>
+                            <li>pgAdmin (PostgreSQL)</li>
+                            <li>MongoDB Compass</li>
+                            <li>Redis Commander</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">CLI Tools</h4>
+                        <ul style="line-height: 2;">
+                            <li>psql (PostgreSQL)</li>
+                            <li>redis-cli</li>
+                            <li>mongosh</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Monitoring -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-line"></i> Monitoramento & APM</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Observabilidade</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li>Prometheus + Grafana</li>
+                            <li>Jaeger (Distributed Tracing)</li>
+                            <li>ELK Stack (Logs)</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Profiling</h4>
+                        <ul style="line-height: 2;">
+                            <li>cProfile (Python)</li>
+                            <li>py-spy</li>
+                            <li>New Relic / Datadog</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Testing -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-vial"></i> Testing & QA</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Frameworks</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li>pytest (unit tests)</li>
+                            <li>pytest-asyncio</li>
+                            <li>Locust (load testing)</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">API Testing</h4>
+                        <ul style="line-height: 2;">
+                            <li>Postman / Insomnia</li>
+                            <li>httpie (CLI)</li>
+                            <li>k6 (load testing)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interview Prep -->
+    <section style="padding: 3rem 0;">
+        <div class="container">
+            <h2 class="section-title">💼 Preparação para Entrevistas</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                <!-- System Design Resources -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-sitemap"></i> System Design</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Plataformas</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li><a href="https://github.com/donnemartin/system-design-primer" target="_blank">System Design Primer</a></li>
+                            <li><a href="https://www.educative.io/courses/grokking-the-system-design-interview" target="_blank">Grokking System Design</a></li>
+                            <li><a href="https://github.com/checkcheckzz/system-design-interview" target="_blank">System Design Interview</a></li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Tópicos Importantes</h4>
+                        <ul style="line-height: 2;">
+                            <li>Load Balancing</li>
+                            <li>Caching Strategies</li>
+                            <li>Database Sharding</li>
+                            <li>CAP Theorem</li>
+                            <li>Microservices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Coding Interview -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-code"></i> Coding Interview</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Plataformas</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li><a href="https://leetcode.com" target="_blank">LeetCode</a></li>
+                            <li><a href="https://www.hackerrank.com" target="_blank">HackerRank</a></li>
+                            <li><a href="https://exercism.org" target="_blank">Exercism</a></li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Padrões</h4>
+                        <ul style="line-height: 2;">
+                            <li>Two Pointers</li>
+                            <li>Sliding Window</li>
+                            <li>Binary Search</li>
+                            <li>DFS / BFS</li>
+                            <li>Dynamic Programming</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Behavioral -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-comments"></i> Behavioral Interview</h3>
+                    </div>
+                    <div class="card-body">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Método STAR</h4>
+                        <ul style="margin-bottom: 1.5rem; line-height: 2;">
+                            <li><strong>S</strong>ituation - Contexto</li>
+                            <li><strong>T</strong>ask - Tarefa/Desafio</li>
+                            <li><strong>A</strong>ction - Suas ações</li>
+                            <li><strong>R</strong>esult - Resultado</li>
+                        </ul>
+
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Perguntas Comuns</h4>
+                        <ul style="line-height: 2;">
+                            <li>Tell me about yourself</li>
+                            <li>Why this company?</li>
+                            <li>Biggest challenge</li>
+                            <li>Conflict resolution</li>
+                            <li>Leadership example</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Study Tips -->
+    <section style="padding: 3rem 0; background: var(--gray-lighter);">
+        <div class="container">
+            <h2 class="section-title">💡 Dicas de Estudo</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--primary); margin-bottom: 1rem;">
+                            <i class="fas fa-brain"></i> Aprendizado Ativo
+                        </h3>
+                        <ul style="line-height: 2;">
+                            <li>Implemente todos os exemplos</li>
+                            <li>Modifique o código e veja o que quebra</li>
+                            <li>Explique conceitos em voz alta</li>
+                            <li>Desenhe diagramas de arquitetura</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--success); margin-bottom: 1rem;">
+                            <i class="fas fa-repeat"></i> Spaced Repetition
+                        </h3>
+                        <ul style="line-height: 2;">
+                            <li>Revise conceitos após 1 dia</li>
+                            <li>Revise novamente após 3 dias</li>
+                            <li>Revise após 1 semana</li>
+                            <li>Use Anki para flashcards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--warning); margin-bottom: 1rem;">
+                            <i class="fas fa-project-diagram"></i> Build Projects
+                        </h3>
+                        <ul style="line-height: 2;">
+                            <li>Clone apps famosos (Twitter, Uber)</li>
+                            <li>Adicione features incrementalmente</li>
+                            <li>Documente decisões de design</li>
+                            <li>Publique no GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3 style="color: var(--danger); margin-bottom: 1rem;">
+                            <i class="fas fa-users"></i> Community
+                        </h3>
+                        <ul style="line-height: 2;">
+                            <li>Participe de Discord/Slack tech</li>
+                            <li>Contribua para open source</li>
+                            <li>Faça pair programming</li>
+                            <li>Participe de hackathons</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para começar?</h2>
+            <p>Use estes recursos para complementar seu estudo e acelerar seu aprendizado!</p>
+            <a href="modules.html" class="btn btn-primary btn-large">
+                <i class="fas fa-rocket"></i> Ver Módulos
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Backend Study Repository</h4>
+                    <p>Guia completo do básico ao avançado em Backend Development</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                        <li><a href="projects.html">Projetos</a></li>
+                        <li><a href="progress.html">Progresso</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="quiz.html">Quiz Interativo</a></li>
+                        <li><a href="roadmap.html">Roadmap</a></li>
+                        <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Feito com <i class="fas fa-heart"></i> para estudantes de Backend</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
