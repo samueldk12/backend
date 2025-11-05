@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .faq-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .faq-category {
+            margin: 40px 0;
+        }
+
+        .category-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+            color: #2c3e50;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #f7f9fc;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 28px;
+            font-weight: 300;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 25px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 1000px;
+            padding: 0 25px 20px;
+        }
+
+        .faq-answer code {
+            background: #f7f9fc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+        }
+
+        .faq-answer ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+
+        .faq-answer li {
+            margin: 8px 0;
+        }
+
+        .quick-links {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .quick-links h3 {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quick-link-btn {
+            background: white;
+            color: #667eea;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s;
+            display: block;
+        }
+
+        .quick-link-btn:hover {
+            transform: translateY(-3px);
+            color: #667eea;
+        }
+
+        .search-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .info-box {
+            background: #e6f7ff;
+            border-left: 4px solid #1890ff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+                <li><a href="faq.html" class="active">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="faq-container">
+        <h1 style="text-align: center; margin: 40px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            ❓ Perguntas Frequentes
+        </h1>
+
+        <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 50px;">
+            Respostas para as dúvidas mais comuns sobre o repositório
+        </p>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar pergunta...">
+        </div>
+
+        <!-- Geral -->
+        <div class="faq-category">
+            <h2 class="category-title">📚 Geral</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Para quem é este repositório?
+                </div>
+                <div class="faq-answer">
+                    Este repositório é ideal para:
+                    <ul>
+                        <li><strong>Iniciantes</strong> que querem aprender backend do zero</li>
+                        <li><strong>Intermediários</strong> que desejam aprofundar conhecimentos</li>
+                        <li><strong>Avançados</strong> que estão se preparando para entrevistas</li>
+                        <li><strong>Profissionais</strong> que querem revisar conceitos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Preciso saber programar antes de começar?
+                </div>
+                <div class="faq-answer">
+                    Sim, é recomendável ter conhecimentos básicos de Python (variáveis, funções, classes).
+                    Se você é totalmente iniciante em programação, recomendamos primeiro fazer um curso básico de Python
+                    e depois retornar para este repositório.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quanto tempo leva para completar todo o conteúdo?
+                </div>
+                <div class="faq-answer">
+                    Depende da sua dedicação:
+                    <ul>
+                        <li><strong>Tempo integral (40h/semana):</strong> 3-4 meses</li>
+                        <li><strong>Meio período (20h/semana):</strong> 6-8 meses</li>
+                        <li><strong>Estudo casual (10h/semana):</strong> 12+ meses</li>
+                    </ul>
+                    O roadmap sugere um cronograma de 12 semanas para quem estuda tempo integral.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    O conteúdo é gratuito?
+                </div>
+                <div class="faq-answer">
+                    Sim! Todo o conteúdo é 100% gratuito e open-source. Você pode estudar, modificar e compartilhar
+                    livremente. O código está disponível no GitHub.
+                </div>
+            </div>
+        </div>
+
+        <!-- Estudos -->
+        <div class="faq-category">
+            <h2 class="category-title">📖 Sobre os Estudos</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Por onde devo começar?
+                </div>
+                <div class="faq-answer">
+                    Siga esta ordem:
+                    <ol>
+                        <li>Leia a página <a href="getting-started.html" style="color: #667eea;">Getting Started</a></li>
+                        <li>Configure o ambiente (instale Docker, Python, etc)</li>
+                        <li>Instale a CLI: <code>pip install -r requirements-cli.txt</code></li>
+                        <li>Comece pelo <strong>Módulo 01 - Fundamentos</strong></li>
+                        <li>Siga o <a href="roadmap.html" style="color: #667eea;">Roadmap</a> sequencialmente</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Posso pular módulos ou preciso seguir a ordem?
+                </div>
+                <div class="faq-answer">
+                    <strong>Recomendamos seguir a ordem</strong>, pois cada módulo constrói sobre conceitos anteriores.
+                    No entanto, se você já tem experiência, pode:
+                    <ul>
+                        <li>Revisar rapidamente módulos que você já domina</li>
+                        <li>Pular diretamente para tópicos específicos que precisa</li>
+                        <li>Focar nos projetos de entrevista se está se preparando para vagas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como funciona o sistema de tracking de progresso?
+                </div>
+                <div class="faq-answer">
+                    Você pode acompanhar seu progresso de duas formas:
+                    <ul>
+                        <li><strong>CLI:</strong> <code>./study progress show</code> para ver no terminal</li>
+                        <li><strong>Web:</strong> Acesse a página <a href="progress.html" style="color: #667eea;">Progresso</a></li>
+                    </ul>
+                    O progresso é salvo localmente em <code>~/.backend_study_progress.json</code>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Os exemplos são executáveis ou apenas teóricos?
+                </div>
+                <div class="faq-answer">
+                    <strong>Todos os exemplos são 100% executáveis!</strong> Cada módulo tem uma pasta <code>exemplos/</code>
+                    com código Python funcional que você pode rodar imediatamente. Use a CLI para executar:
+                    <code>./study module run 01 1</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- Técnico -->
+        <div class="faq-category">
+            <h2 class="category-title">🛠️ Técnico</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quais tecnologias preciso instalar?
+                </div>
+                <div class="faq-answer">
+                    <strong>Essenciais:</strong>
+                    <ul>
+                        <li>Python 3.11+ (linguagem principal)</li>
+                        <li>Docker e Docker Compose (para bancos de dados)</li>
+                        <li>Git (controle de versão)</li>
+                    </ul>
+                    <strong>Opcional (instalado automaticamente pelo projeto):</strong>
+                    <ul>
+                        <li>PostgreSQL (via Docker)</li>
+                        <li>MongoDB (via Docker)</li>
+                        <li>Redis (via Docker)</li>
+                        <li>FastAPI, SQLAlchemy, etc (via pip)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Posso usar Windows? Ou precisa ser Linux/Mac?
+                </div>
+                <div class="faq-answer">
+                    <strong>Funciona em qualquer sistema operacional!</strong>
+                    <ul>
+                        <li><strong>Linux/Mac:</strong> Funcionam nativamente</li>
+                        <li><strong>Windows:</strong> Use WSL2 (Windows Subsystem for Linux) para melhor compatibilidade,
+                        ou execute diretamente com PowerShell (alguns comandos podem precisar de ajustes)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Erro: "Module not found" ao executar exemplos
+                </div>
+                <div class="faq-answer">
+                    Solução:
+                    <ol>
+                        <li>Certifique-se de estar no diretório raiz do projeto</li>
+                        <li>Execute: <code>export PYTHONPATH=$PYTHONPATH:$PWD</code></li>
+                        <li>Ou use a CLI: <code>./study module run 01 1</code> (já configura automaticamente)</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Docker não inicia / Erro de conexão com containers
+                </div>
+                <div class="faq-answer">
+                    Verifique:
+                    <ol>
+                        <li><code>docker ps</code> - Docker está rodando?</li>
+                        <li><code>sudo systemctl start docker</code> - Inicie o Docker</li>
+                        <li><code>docker-compose up -d</code> - Inicie os containers</li>
+                        <li><code>docker-compose logs</code> - Veja os logs de erro</li>
+                    </ol>
+                    Para problemas persistentes, consulte a <a href="cli-docs.html#troubleshooting" style="color: #667eea;">seção de troubleshooting</a>.
+                </div>
+            </div>
+        </div>
+
+        <!-- Entrevistas -->
+        <div class="faq-category">
+            <h2 class="category-title">🎤 Preparação para Entrevistas</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quanto tempo preciso para me preparar para entrevistas?
+                </div>
+                <div class="faq-answer">
+                    Depende do seu nível atual:
+                    <ul>
+                        <li><strong>Junior → Mid-level:</strong> 3-6 meses de estudo focado</li>
+                        <li><strong>Mid → Senior:</strong> 2-3 meses revisando e praticando</li>
+                        <li><strong>Preparação intensiva (já tem base):</strong> 8-12 semanas</li>
+                    </ul>
+                    Consulte o <a href="interview-prep.html" style="color: #667eea;">guia de entrevistas</a> para cronograma detalhado.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quais projetos são mais cobrados em entrevistas?
+                </div>
+                <div class="faq-answer">
+                    <strong>Top 6 (por frequência):</strong>
+                    <ol>
+                        <li><strong>LRU Cache</strong> ⭐⭐⭐⭐⭐ - Quase toda entrevista</li>
+                        <li><strong>URL Shortener</strong> ⭐⭐⭐⭐⭐ - Muito comum</li>
+                        <li><strong>Rate Limiter</strong> ⭐⭐⭐⭐ - API design</li>
+                        <li><strong>Twitter Clone</strong> ⭐⭐⭐⭐⭐ - System design high-level</li>
+                        <li><strong>Uber/Lyft</strong> ⭐⭐⭐⭐⭐ - Geospatial systems</li>
+                        <li><strong>Distributed Lock</strong> ⭐⭐⭐⭐ - Concorrência distribuída</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como praticar System Design se não tenho experiência em produção?
+                </div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Estude os <strong>12 projetos de entrevista</strong> deste repositório</li>
+                        <li>Leia blogs de engenharia de grandes empresas (Netflix, Uber, Twitter)</li>
+                        <li>Pratique desenhando arquiteturas no papel/quadro</li>
+                        <li>Grave-se explicando designs em voz alta</li>
+                        <li>Faça mock interviews (Pramp, Exponent.com)</li>
+                        <li>Use o framework SNAKE para estruturar respostas</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Devo memorizar soluções ou entender conceitos?
+                </div>
+                <div class="faq-answer">
+                    <strong>ENTENDER CONCEITOS!</strong> Memorização não funciona porque:
+                    <ul>
+                        <li>Entrevistadores mudam requisitos durante a entrevista</li>
+                        <li>Você precisa explicar trade-offs e justificar decisões</li>
+                        <li>Cada empresa tem contextos diferentes</li>
+                    </ul>
+                    <strong>Foque em:</strong> Patterns (Two Pointers, Sliding Window), trade-offs (CAP theorem),
+                    e building blocks (caching, load balancing, sharding).
+                </div>
+            </div>
+        </div>
+
+        <!-- Contribuição -->
+        <div class="faq-category">
+            <h2 class="category-title">🤝 Contribuição</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Como posso contribuir com o projeto?
+                </div>
+                <div class="faq-answer">
+                    Várias formas:
+                    <ul>
+                        <li><strong>Código:</strong> Adicione novos exemplos, exercícios ou projetos</li>
+                        <li><strong>Documentação:</strong> Melhore explicações, corrija erros</li>
+                        <li><strong>Issues:</strong> Reporte bugs ou sugira melhorias</li>
+                        <li><strong>Traduções:</strong> Ajude a traduzir para outros idiomas</li>
+                        <li><strong>Compartilhe:</strong> Divulgue o repositório para outros estudantes</li>
+                    </ul>
+                    Veja o guia completo em <a href="contributing.html" style="color: #667eea;">Como Contribuir</a>.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    Encontrei um erro, como reportar?
+                </div>
+                <div class="faq-answer">
+                    <ol>
+                        <li>Vá para <a href="https://github.com/samueldk12/backend/issues" target="_blank" style="color: #667eea;">GitHub Issues</a></li>
+                        <li>Clique em "New Issue"</li>
+                        <li>Descreva:
+                            <ul>
+                                <li>O que você esperava que acontecesse</li>
+                                <li>O que realmente aconteceu</li>
+                                <li>Passos para reproduzir o erro</li>
+                                <li>Seu ambiente (OS, Python version, etc)</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="quick-links">
+            <h3>🔗 Links Rápidos</h3>
+            <p style="margin-bottom: 20px; opacity: 0.9;">Ainda tem dúvidas? Confira estes recursos:</p>
+            <div class="quick-links-grid">
+                <a href="getting-started.html" class="quick-link-btn">🚀 Getting Started</a>
+                <a href="cli-docs.html" class="quick-link-btn">📖 Documentação CLI</a>
+                <a href="interview-prep.html" class="quick-link-btn">🎯 Guia de Entrevistas</a>
+                <a href="glossary.html" class="quick-link-btn">📚 Glossário</a>
+                <a href="contributing.html" class="quick-link-btn">🤝 Como Contribuir</a>
+                <a href="https://github.com/samueldk12/backend/issues" class="quick-link-btn" target="_blank">💬 Fazer Pergunta</a>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top: 40px;">
+            <strong>💡 Não encontrou sua resposta?</strong><br>
+            Abra uma issue no <a href="https://github.com/samueldk12/backend/issues" style="color: #1890ff;" target="_blank">GitHub</a>
+            e teremos prazer em ajudar!
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Desenvolvido com 💜 para ajudar desenvolvedores a crescerem</p>
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/samueldk12/backend" style="color: white; margin: 0 10px;" target="_blank">GitHub</a>
+            <a href="index.html" style="color: white; margin: 0 10px;">Home</a>
+            <a href="faq.html" style="color: white; margin: 0 10px;">FAQ</a>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ items
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    if (searchTerm.length > 2) {
+                        item.classList.add('active'); // Auto-expand matching items
+                    }
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('active');
+                }
+            });
+
+            // Show/hide categories based on visible items
+            document.querySelectorAll('.faq-category').forEach(category => {
+                const visibleItems = category.querySelectorAll('.faq-item[style="display: block;"], .faq-item:not([style*="display"])');
+                category.style.display = visibleItems.length > 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

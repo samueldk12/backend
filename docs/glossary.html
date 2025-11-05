@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossary - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .glossary-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .search-box { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin-bottom: 30px; }
+        .search-input { width: 100%; padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px; }
+        .search-input:focus { outline: none; border-color: #667eea; }
+        .alphabet-nav { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px 0; }
+        .letter-btn { background: white; border: 2px solid #667eea; color: #667eea; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .letter-btn:hover, .letter-btn.active { background: #667eea; color: white; }
+        .glossary-section { margin: 40px 0; }
+        .letter-header { font-size: 32px; font-weight: 700; color: #667eea; margin-bottom: 20px; padding: 10px 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; }
+        .term-card { background: white; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); transition: all 0.3s; }
+        .term-card:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+        .term-title { font-size: 20px; font-weight: 700; color: #2c3e50; margin-bottom: 10px; }
+        .term-definition { color: #555; line-height: 1.6; margin-bottom: 10px; }
+        .term-example { background: #f7f9fc; padding: 10px; border-left: 3px solid #667eea; margin-top: 10px; font-size: 14px; color: #666; }
+        .term-tags { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+        .tag { background: #667eea; color: white; padding: 4px 10px; border-radius: 15px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contributing.html">Contribuir</a></li>
+                <li><a href="glossary.html" class="active">Glossário</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="glossary-container">
+        <h1 style="text-align: center; margin: 40px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">📚 Glossário Backend</h1>
+        <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 50px;">Referência rápida de termos técnicos essenciais</p>
+
+        <div class="search-box"><input type="text" id="searchInput" class="search-input" placeholder="🔍 Buscar termo..."></div>
+
+        <div class="alphabet-nav" id="alphabetNav"></div>
+
+        <div id="glossaryContent">
+            <div class="glossary-section" data-letter="A">
+                <div class="letter-header">A</div>
+                <div class="term-card">
+                    <div class="term-title">ACID</div>
+                    <div class="term-definition">Propriedades de transações em bancos de dados relacionais: <strong>Atomicity</strong> (tudo ou nada), <strong>Consistency</strong> (regras mantidas), <strong>Isolation</strong> (transações isoladas), <strong>Durability</strong> (dados persistidos).</div>
+                    <div class="term-tags"><span class="tag">Database</span><span class="tag">Transactions</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">API (Application Programming Interface)</div>
+                    <div class="term-definition">Interface que permite comunicação entre sistemas. Em backend, geralmente HTTP REST APIs, GraphQL, ou gRPC.</div>
+                    <div class="term-tags"><span class="tag">Architecture</span><span class="tag">Communication</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Async/Await</div>
+                    <div class="term-definition">Padrão para programação assíncrona que permite operações I/O sem bloquear a thread principal.</div>
+                    <div class="term-example">Exemplo: async def fetch_data(): data = await db.query()</div>
+                    <div class="term-tags"><span class="tag">Python</span><span class="tag">Concurrency</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="B">
+                <div class="letter-header">B</div>
+                <div class="term-card">
+                    <div class="term-title">BASE</div>
+                    <div class="term-definition">Alternativa ao ACID para bancos NoSQL: <strong>Basically Available</strong>, <strong>Soft state</strong>, <strong>Eventually consistent</strong>.</div>
+                    <div class="term-tags"><span class="tag">NoSQL</span><span class="tag">Consistency</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">B-Tree Index</div>
+                    <div class="term-definition">Estrutura de dados em árvore usada em bancos de dados para buscas eficientes (O(log n)).</div>
+                    <div class="term-tags"><span class="tag">Database</span><span class="tag">Performance</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="C">
+                <div class="letter-header">C</div>
+                <div class="term-card">
+                    <div class="term-title">CAP Theorem</div>
+                    <div class="term-definition">Em sistemas distribuídos, você só pode garantir 2 de 3: <strong>Consistency</strong>, <strong>Availability</strong>, <strong>Partition tolerance</strong>.</div>
+                    <div class="term-tags"><span class="tag">Distributed Systems</span><span class="tag">Theory</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Cache</div>
+                    <div class="term-definition">Armazenamento temporário de dados para acesso rápido. Redis, Memcached são exemplos comuns.</div>
+                    <div class="term-tags"><span class="tag">Performance</span><span class="tag">Architecture</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">CDN (Content Delivery Network)</div>
+                    <div class="term-definition">Rede de servidores distribuídos geograficamente para entregar conteúdo com baixa latência.</div>
+                    <div class="term-tags"><span class="tag">Infrastructure</span><span class="tag">Performance</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">CQRS</div>
+                    <div class="term-definition">Command Query Responsibility Segregation - separa operações de leitura e escrita em modelos diferentes.</div>
+                    <div class="term-tags"><span class="tag">Architecture</span><span class="tag">Pattern</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="D">
+                <div class="letter-header">D</div>
+                <div class="term-card">
+                    <div class="term-title">DDD (Domain-Driven Design)</div>
+                    <div class="term-definition">Abordagem de design de software focada em modelar o domínio do negócio com entidades, agregados e bounded contexts.</div>
+                    <div class="term-tags"><span class="tag">Architecture</span><span class="tag">Design</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">DNS (Domain Name System)</div>
+                    <div class="term-definition">Sistema que traduz nomes de domínio (google.com) para endereços IP (142.250.185.46).</div>
+                    <div class="term-tags"><span class="tag">Network</span><span class="tag">Infrastructure</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="E">
+                <div class="letter-header">E</div>
+                <div class="term-card">
+                    <div class="term-title">Event Sourcing</div>
+                    <div class="term-definition">Pattern onde mudanças de estado são armazenadas como sequência de eventos imutáveis.</div>
+                    <div class="term-tags"><span class="tag">Architecture</span><span class="tag">Pattern</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="G">
+                <div class="letter-header">G</div>
+                <div class="term-card">
+                    <div class="term-title">GIL (Global Interpreter Lock)</div>
+                    <div class="term-definition">Mutex do Python que impede múltiplas threads nativas de executar bytecode simultaneamente.</div>
+                    <div class="term-tags"><span class="tag">Python</span><span class="tag">Concurrency</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">gRPC</div>
+                    <div class="term-definition">Framework RPC do Google usando Protocol Buffers e HTTP/2, ideal para comunicação entre microsserviços.</div>
+                    <div class="term-tags"><span class="tag">Protocol</span><span class="tag">Microservices</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="H">
+                <div class="letter-header">H</div>
+                <div class="term-card">
+                    <div class="term-title">HTTP/2</div>
+                    <div class="term-definition">Versão melhorada do HTTP com multiplexing, server push, e compressão de headers.</div>
+                    <div class="term-tags"><span class="tag">Protocol</span><span class="tag">Network</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="I">
+                <div class="letter-header">I</div>
+                <div class="term-card">
+                    <div class="term-title">Idempotência</div>
+                    <div class="term-definition">Propriedade onde executar uma operação múltiplas vezes produz o mesmo resultado. Essencial para APIs.</div>
+                    <div class="term-tags"><span class="tag">API</span><span class="tag">Design</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="J">
+                <div class="letter-header">J</div>
+                <div class="term-card">
+                    <div class="term-title">JWT (JSON Web Token)</div>
+                    <div class="term-definition">Token compacto e autocontido para autenticação. Formato: header.payload.signature</div>
+                    <div class="term-tags"><span class="tag">Authentication</span><span class="tag">Security</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="L">
+                <div class="letter-header">L</div>
+                <div class="term-card">
+                    <div class="term-title">Load Balancer</div>
+                    <div class="term-definition">Distribui requests entre múltiplos servidores usando algoritmos como round-robin ou least connections.</div>
+                    <div class="term-tags"><span class="tag">Infrastructure</span><span class="tag">Scalability</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">LRU Cache</div>
+                    <div class="term-definition">Least Recently Used - algoritmo de cache que remove itens menos recentemente usados quando cheio.</div>
+                    <div class="term-tags"><span class="tag">Algorithm</span><span class="tag">Cache</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="M">
+                <div class="letter-header">M</div>
+                <div class="term-card">
+                    <div class="term-title">Microservices</div>
+                    <div class="term-definition">Arquitetura onde aplicação é dividida em serviços pequenos e independentes que se comunicam via APIs.</div>
+                    <div class="term-tags"><span class="tag">Architecture</span><span class="tag">Scalability</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Multiprocessing</div>
+                    <div class="term-definition">Técnica para executar código em múltiplos processos (CPU-bound tasks), contornando o GIL do Python.</div>
+                    <div class="term-tags"><span class="tag">Python</span><span class="tag">Concurrency</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="N">
+                <div class="letter-header">N</div>
+                <div class="term-card">
+                    <div class="term-title">N+1 Problem</div>
+                    <div class="term-definition">Problema de performance onde 1 query inicial gera N queries adicionais. Solução: eager loading.</div>
+                    <div class="term-tags"><span class="tag">Database</span><span class="tag">Performance</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">NoSQL</div>
+                    <div class="term-definition">Bancos de dados não-relacionais: Document (MongoDB), Key-Value (Redis), Column (Cassandra), Graph (Neo4j).</div>
+                    <div class="term-tags"><span class="tag">Database</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="O">
+                <div class="letter-header">O</div>
+                <div class="term-card">
+                    <div class="term-title">ORM (Object-Relational Mapping)</div>
+                    <div class="term-definition">Biblioteca que mapeia objetos Python para tabelas SQL. Exemplo: SQLAlchemy, Django ORM.</div>
+                    <div class="term-tags"><span class="tag">Database</span><span class="tag">Python</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="P">
+                <div class="letter-header">P</div>
+                <div class="term-card">
+                    <div class="term-title">Pub/Sub</div>
+                    <div class="term-definition">Publish/Subscribe - padrão de mensageria onde publishers enviam mensagens para tópicos e subscribers recebem.</div>
+                    <div class="term-tags"><span class="tag">Pattern</span><span class="tag">Messaging</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="R">
+                <div class="letter-header">R</div>
+                <div class="term-card">
+                    <div class="term-title">Rate Limiting</div>
+                    <div class="term-definition">Técnica para limitar número de requests por período. Algoritmos: Token Bucket, Leaky Bucket, Fixed Window.</div>
+                    <div class="term-tags"><span class="tag">API</span><span class="tag">Security</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">REST</div>
+                    <div class="term-definition">Representational State Transfer - arquitetura para APIs usando HTTP (GET, POST, PUT, DELETE).</div>
+                    <div class="term-tags"><span class="tag">API</span><span class="tag">Protocol</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="S">
+                <div class="letter-header">S</div>
+                <div class="term-card">
+                    <div class="term-title">Sharding</div>
+                    <div class="term-definition">Técnica de particionar banco de dados horizontalmente distribuindo dados entre múltiplos servidores.</div>
+                    <div class="term-tags"><span class="tag">Database</span><span class="tag">Scalability</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">SQL Injection</div>
+                    <div class="term-definition">Ataque onde código SQL malicioso é inserido em inputs. Prevenção: prepared statements, ORMs.</div>
+                    <div class="term-tags"><span class="tag">Security</span><span class="tag">Database</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="T">
+                <div class="letter-header">T</div>
+                <div class="term-card">
+                    <div class="term-title">TCP vs UDP</div>
+                    <div class="term-definition">TCP: confiável, ordenado, com handshake. UDP: rápido, sem garantias, ideal para streaming/gaming.</div>
+                    <div class="term-tags"><span class="tag">Network</span><span class="tag">Protocol</span></div>
+                </div>
+                <div class="term-card">
+                    <div class="term-title">Threading</div>
+                    <div class="term-definition">Execução paralela de código em threads. Python: ideal para I/O-bound, limitado por GIL para CPU-bound.</div>
+                    <div class="term-tags"><span class="tag">Concurrency</span><span class="tag">Python</span></div>
+                </div>
+            </div>
+
+            <div class="glossary-section" data-letter="W">
+                <div class="letter-header">W</div>
+                <div class="term-card">
+                    <div class="term-title">WebSocket</div>
+                    <div class="term-definition">Protocolo para comunicação bidirecional e em tempo real entre cliente e servidor.</div>
+                    <div class="term-tags"><span class="tag">Protocol</span><span class="tag">Real-time</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+    </footer>
+
+    <script>
+        // Generate alphabet navigation
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVW'.split('');
+        const nav = document.getElementById('alphabetNav');
+        alphabet.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.className = 'letter-btn';
+            btn.textContent = letter;
+            btn.onclick = () => {
+                document.querySelectorAll('.letter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.querySelector(`[data-letter="${letter}"]`).scrollIntoView({ behavior: 'smooth' });
+            };
+            nav.appendChild(btn);
+        });
+
+        // Search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.term-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

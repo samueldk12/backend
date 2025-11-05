@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Comparisons - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .comparisons-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .comparison-card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .comparison-title { font-size: 28px; font-weight: 700; color: #2c3e50; margin-bottom: 20px; text-align: center; padding-bottom: 15px; border-bottom: 3px solid #667eea; }
+        .vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: start; }
+        .tech-side { padding: 20px; border-radius: 10px; }
+        .tech-side.left { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .tech-side.right { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+        .tech-name { font-size: 24px; font-weight: 700; margin-bottom: 15px; text-align: center; }
+        .vs-divider { font-size: 32px; font-weight: 700; color: #667eea; align-self: center; }
+        .feature-list { list-style: none; padding: 0; }
+        .feature-list li { padding: 10px 0; padding-left: 25px; position: relative; }
+        .feature-list li::before { content: '✓'; position: absolute; left: 0; font-weight: bold; }
+        .when-to-use { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .when-to-use-title { font-weight: 700; margin-bottom: 10px; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        .comparison-table th { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px; text-align: left; }
+        .comparison-table td { padding: 15px; border-bottom: 1px solid #e0e0e0; }
+        .comparison-table tr:hover { background: #f7f9fc; }
+        .pro { color: #52c41a; font-weight: 600; }
+        .con { color: #ff4d4f; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contributing.html">Contribuir</a></li>
+                <li><a href="glossary.html">Glossário</a></li>
+                <li><a href="comparisons.html" class="active">Comparações</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="comparisons-container">
+        <h1 style="text-align: center; margin: 40px 0; font-size: 42px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">⚖️ Comparações Técnicas</h1>
+        <p style="text-align: center; font-size: 18px; color: #555; margin-bottom: 50px;">Entenda as diferenças e saiba quando usar cada tecnologia</p>
+
+        <!-- REST vs GraphQL -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">REST vs GraphQL</h2>
+            <div class="vs-grid">
+                <div class="tech-side left">
+                    <div class="tech-name">REST</div>
+                    <ul class="feature-list">
+                        <li>Múltiplos endpoints (/users, /posts)</li>
+                        <li>HTTP methods (GET, POST, PUT, DELETE)</li>
+                        <li>Over-fetching ou under-fetching</li>
+                        <li>Caching HTTP nativo</li>
+                        <li>Simples e bem estabelecido</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • APIs públicas simples<br>
+                        • CRUD básico<br>
+                        • Caching importante<br>
+                        • Equipe pequena
+                    </div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="tech-side right">
+                    <div class="tech-name">GraphQL</div>
+                    <ul class="feature-list">
+                        <li>Single endpoint (/graphql)</li>
+                        <li>Query language flexível</li>
+                        <li>Exatamente o que precisa</li>
+                        <li>Caching mais complexo</li>
+                        <li>Introspection e tipagem forte</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • Apps móveis (bandwidth)<br>
+                        • Múltiplos clientes<br>
+                        • Dados relacionados complexos<br>
+                        • Iteração rápida de frontend
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SQL vs NoSQL -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">SQL vs NoSQL</h2>
+            <table class="comparison-table">
+                <thead><tr><th>Aspecto</th><th>SQL (PostgreSQL, MySQL)</th><th>NoSQL (MongoDB, Cassandra)</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Schema</strong></td><td>Fixo, definido previamente</td><td>Flexível, schema-less</td></tr>
+                    <tr><td><strong>Escalabilidade</strong></td><td>Vertical (scale-up)</td><td>Horizontal (scale-out)</td></tr>
+                    <tr><td><strong>Transações</strong></td><td>ACID completo</td><td>BASE (eventual consistency)</td></tr>
+                    <tr><td><strong>Relacionamentos</strong></td><td>JOINs nativos</td><td>Denormalização</td></tr>
+                    <tr><td><strong>Casos de uso</strong></td><td>Banking, E-commerce, ERP</td><td>Real-time, IoT, Logs, Social</td></tr>
+                    <tr><td><strong>Prós</strong></td><td class="pro">ACID, JOINs, Maturidade</td><td class="pro">Escala, Flexibilidade, Performance</td></tr>
+                    <tr><td><strong>Contras</strong></td><td class="con">Escala horizontal difícil</td><td class="con">Sem JOINs, consistência eventual</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Sync vs Async -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">Síncrono vs Assíncrono (Python)</h2>
+            <div class="vs-grid">
+                <div class="tech-side left">
+                    <div class="tech-name">Síncrono</div>
+                    <ul class="feature-list">
+                        <li>Código sequencial simples</li>
+                        <li>Blocking I/O</li>
+                        <li>Uma requisição por thread</li>
+                        <li>Fácil de debugar</li>
+                        <li>Threading/Multiprocessing</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • CPU-bound tasks<br>
+                        • Scripts simples<br>
+                        • Baixo volume<br>
+                        • Código legado
+                    </div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="tech-side right">
+                    <div class="tech-name">Assíncrono</div>
+                    <ul class="feature-list">
+                        <li>async/await syntax</li>
+                        <li>Non-blocking I/O</li>
+                        <li>Milhares de conexões simultâneas</li>
+                        <li>Event loop</li>
+                        <li>FastAPI, aiohttp</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • I/O-bound tasks<br>
+                        • APIs high-throughput<br>
+                        • WebSockets<br>
+                        • Microservices
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monolith vs Microservices -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">Monolito vs Microservices</h2>
+            <table class="comparison-table">
+                <thead><tr><th>Aspecto</th><th>Monolito</th><th>Microservices</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Deployment</strong></td><td>Tudo junto</td><td>Independente por serviço</td></tr>
+                    <tr><td><strong>Escala</strong></td><td>Escala tudo ou nada</td><td>Escala serviços individualmente</td></tr>
+                    <tr><td><strong>Desenvolvimento</strong></td><td>Uma codebase</td><td>Múltiplos repositórios</td></tr>
+                    <tr><td><strong>Tecnologia</strong></td><td>Stack único</td><td>Polyglot (múltiplas linguagens)</td></tr>
+                    <tr><td><strong>Debugging</strong></td><td>Mais simples</td><td>Distributed tracing necessário</td></tr>
+                    <tr><td><strong>Performance</strong></td><td>Chamadas in-process rápidas</td><td>Network overhead entre serviços</td></tr>
+                    <tr><td><strong>Ideal para</strong></td><td>Startups, MVPs, equipes pequenas</td><td>Grandes empresas, alta escala</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Message Queue vs Event Stream -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">Message Queue vs Event Stream</h2>
+            <div class="vs-grid">
+                <div class="tech-side left">
+                    <div class="tech-name">Message Queue<br>(RabbitMQ, SQS)</div>
+                    <ul class="feature-list">
+                        <li>Mensagem consumida e deletada</li>
+                        <li>Fire-and-forget</li>
+                        <li>Ideal para tasks assíncronas</li>
+                        <li>Retry e Dead Letter Queue</li>
+                        <li>Push-based</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • Email/SMS sending<br>
+                        • Image processing<br>
+                        • Background jobs<br>
+                        • Point-to-point messaging
+                    </div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="tech-side right">
+                    <div class="tech-name">Event Stream<br>(Kafka, Kinesis)</div>
+                    <ul class="feature-list">
+                        <li>Eventos persistem (retention)</li>
+                        <li>Replay possível</li>
+                        <li>Múltiplos consumidores</li>
+                        <li>Ordenação garantida por partition</li>
+                        <li>Pull-based</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • Event sourcing<br>
+                        • Analytics real-time<br>
+                        • Log aggregation<br>
+                        • Multiple subscribers
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JWT vs Session -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">JWT vs Session-based Auth</h2>
+            <table class="comparison-table">
+                <thead><tr><th>Aspecto</th><th>JWT (Stateless)</th><th>Session (Stateful)</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Storage</strong></td><td>Client-side (localStorage/cookie)</td><td>Server-side (Redis/Database)</td></tr>
+                    <tr><td><strong>Escalabilidade</strong></td><td>Melhor (stateless)</td><td>Requer session store compartilhado</td></tr>
+                    <tr><td><strong>Revogação</strong></td><td>Difícil (até expirar)</td><td>Fácil (deletar do server)</td></tr>
+                    <tr><td><strong>Payload</strong></td><td>Pode conter claims (user info)</td><td>Apenas session ID</td></tr>
+                    <tr><td><strong>Tamanho</strong></td><td>Maior (enviado em todo request)</td><td>Menor (apenas ID)</td></tr>
+                    <tr><td><strong>Segurança</strong></td><td>XSS se localStorage, CSRF se cookie</td><td>CSRF se não protegido</td></tr>
+                    <tr><td><strong>Ideal para</strong></td><td>APIs, Mobile apps, Microservices</td><td>Web apps tradicionais, Admin panels</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Docker vs VM -->
+        <div class="comparison-card">
+            <h2 class="comparison-title">Containers (Docker) vs Virtual Machines</h2>
+            <div class="vs-grid">
+                <div class="tech-side left">
+                    <div class="tech-name">Docker</div>
+                    <ul class="feature-list">
+                        <li>Compartilha kernel do host</li>
+                        <li>Leve (MBs)</li>
+                        <li>Startup em segundos</li>
+                        <li>Portável</li>
+                        <li>Ideal para microservices</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • Desenvolvimento local<br>
+                        • CI/CD pipelines<br>
+                        • Microservices<br>
+                        • Cloud-native apps
+                    </div>
+                </div>
+                <div class="vs-divider">VS</div>
+                <div class="tech-side right">
+                    <div class="tech-name">Virtual Machine</div>
+                    <ul class="feature-list">
+                        <li>Kernel próprio (full OS)</li>
+                        <li>Pesada (GBs)</li>
+                        <li>Startup em minutos</li>
+                        <li>Isolamento completo</li>
+                        <li>Suporta múltiplos OS</li>
+                    </ul>
+                    <div class="when-to-use">
+                        <div class="when-to-use-title">Quando usar:</div>
+                        • Isolamento forte (security)<br>
+                        • Diferentes OS necessários<br>
+                        • Aplicações legadas<br>
+                        • Infra tradicional
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="comparison-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; margin-bottom: 20px; text-align: center; border: none;">💡 Princípio Geral</h2>
+            <p style="font-size: 18px; line-height: 1.8; text-align: center; max-width: 800px; margin: 0 auto; opacity: 0.95;">
+                <strong>Não existe "melhor" tecnologia absoluta.</strong><br><br>
+                A escolha certa depende de:<br>
+                • Volume de dados e tráfego<br>
+                • Requisitos de consistência<br>
+                • Experiência da equipe<br>
+                • Prazo e orçamento<br>
+                • Futuro escalamento<br><br>
+                <em>Comece simples e evolua conforme necessário!</em>
+            </p>
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+    </footer>
+</body>
+</html>

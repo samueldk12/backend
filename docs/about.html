@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Backend Study Repository</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tech-item {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .tech-item:hover {
+            background: white;
+            border-color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .tech-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f7f9fc;
+            border-radius: 10px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .team-section {
+            text-align: center;
+            padding: 40px;
+            background: #f7f9fc;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            color: #667eea;
+        }
+
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .principle-item {
+            padding: 25px;
+            background: #f7f9fc;
+            border-radius: 10px;
+            border-top: 4px solid #667eea;
+        }
+
+        .principle-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .principle-desc {
+            color: #555;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">Backend Study</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Getting Started</a></li>
+                <li><a href="modules.html">Módulos</a></li>
+                <li><a href="projects.html">Projetos</a></li>
+                <li><a href="progress.html">Progresso</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="roadmap.html">Roadmap</a></li>
+                <li><a href="resources.html">Recursos</a></li>
+                <li><a href="cli-docs.html">CLI</a></li>
+                <li><a href="interview-prep.html">Entrevistas</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="about-container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-title">🚀 Backend Study Repository</div>
+            <div class="hero-subtitle">
+                Um guia completo e gratuito para se tornar um desenvolvedor backend sênior,
+                desde conceitos fundamentais até arquiteturas distribuídas de larga escala.
+            </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="content-section">
+            <h2 class="section-title">🎯 Nossa Missão</h2>
+            <p class="section-subtitle" style="font-size: 18px; line-height: 1.8; color: #555;">
+                Democratizar o conhecimento de backend engineering, fornecendo um caminho estruturado e prático
+                do básico ao avançado. Queremos que qualquer pessoa, independente de background, possa aprender
+                os conceitos necessários para trabalhar nas melhores empresas de tecnologia do mundo.
+            </p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Módulos Teóricos</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">24+</div>
+                <div class="stat-label">Exemplos Práticos</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Projetos de Entrevista</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12</div>
+                <div class="stat-label">Exercícios Práticos</div>
+            </div>
+        </div>
+
+        <!-- What We Offer -->
+        <div class="content-section">
+            <h2 class="section-title">✨ O Que Oferecemos</h2>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <div class="feature-title">Conteúdo Completo</div>
+                    <div class="feature-desc">
+                        Do básico (como CPU funciona) ao avançado (sistemas distribuídos),
+                        cobrindo todos os tópicos essenciais para backend engineers.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <div class="feature-title">100% Prático</div>
+                    <div class="feature-desc">
+                        Todos os exemplos são executáveis. Código real, funcional e testado,
+                        não apenas teoria abstrata.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-title">Foco em Entrevistas</div>
+                    <div class="feature-desc">
+                        12 projetos cobrados em entrevistas das melhores empresas (FAANG+),
+                        com frameworks e templates prontos.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <div class="feature-title">CLI Interativa</div>
+                    <div class="feature-desc">
+                        Gerencie seus estudos com comandos simples: execute exemplos,
+                        faça quizzes, acompanhe progresso.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Tracking de Progresso</div>
+                    <div class="feature-desc">
+                        Sistema completo para acompanhar seu aprendizado, com estatísticas
+                        e metas claras.
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-title">Open Source</div>
+                    <div class="feature-desc">
+                        Código aberto, gratuito e colaborativo. Contribua e ajude
+                        outros desenvolvedores!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="content-section">
+            <h2 class="section-title">🛠️ Stack Tecnológico</h2>
+            <p class="section-subtitle">
+                Trabalhamos com tecnologias modernas e amplamente utilizadas no mercado
+            </p>
+
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <div class="tech-icon">🐍</div>
+                    <div class="tech-name">Python 3.11+</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <div class="tech-name">FastAPI</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐘</div>
+                    <div class="tech-name">PostgreSQL</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🍃</div>
+                    <div class="tech-name">MongoDB</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔴</div>
+                    <div class="tech-name">Redis</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐳</div>
+                    <div class="tech-name">Docker</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">☸️</div>
+                    <div class="tech-name">Kubernetes</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📨</div>
+                    <div class="tech-name">Celery</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🔧</div>
+                    <div class="tech-name">SQLAlchemy</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🎬</div>
+                    <div class="tech-name">FFmpeg</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🌐</div>
+                    <div class="tech-name">Nginx</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🧪</div>
+                    <div class="tech-name">Pytest</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Principles -->
+        <div class="content-section">
+            <h2 class="section-title">💡 Nossos Princípios</h2>
+
+            <div class="principles">
+                <div class="principle-item">
+                    <div class="principle-title">🎯 Prático, não Teórico</div>
+                    <div class="principle-desc">
+                        Código executável em todos os módulos. Aprenda fazendo, não apenas lendo.
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-title">📖 Do Zero ao Avançado</div>
+                    <div class="principle-desc">
+                        Assumimos zero conhecimento prévio. Explicamos tudo desde o básico.
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-title">🔍 Profundidade, não Superficialidade</div>
+                    <div class="principle-desc">
+                        Não apenas "como", mas "por quê" e "quando usar". Trade-offs sempre discutidos.
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-title">🌍 Gratuito e Acessível</div>
+                    <div class="principle-desc">
+                        Conhecimento deve ser livre. Todo o conteúdo é open-source e gratuito.
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-title">🚀 Focado em Resultados</div>
+                    <div class="principle-desc">
+                        Preparamos você para conseguir vagas reais em empresas de tecnologia.
+                    </div>
+                </div>
+
+                <div class="principle-item">
+                    <div class="principle-title">🤝 Colaborativo</div>
+                    <div class="principle-desc">
+                        Comunidade ativa, contribuições bem-vindas, crescimento coletivo.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roadmap/Timeline -->
+        <div class="content-section">
+            <h2 class="section-title">📅 História e Evolução</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Versão 1.0 - Base Teórica</div>
+                    <div>Criação dos 8 módulos teóricos com explicações detalhadas de conceitos fundamentais até avançados.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Versão 2.0 - Exemplos Práticos</div>
+                    <div>Adição de 24+ exemplos executáveis cobrindo todos os conceitos importantes de cada módulo.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Versão 3.0 - Projetos de Entrevista</div>
+                    <div>12 projetos completos cobrados em entrevistas técnicas das melhores empresas.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Versão 4.0 - CLI Interativa</div>
+                    <div>CLI completa para gerenciar estudos, executar exemplos, fazer quizzes e acompanhar progresso.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Versão 5.0 - GitHub Pages</div>
+                    <div>Website completo com documentação, guias, roadmaps e recursos de aprendizado.</div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Futuro - Expansão Contínua</div>
+                    <div>Mais exemplos, novos módulos, vídeo-aulas, integração com plataformas de coding, e muito mais!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Community -->
+        <div class="team-section">
+            <h2 class="section-title" style="text-align: center;">🤝 Comunidade</h2>
+            <p style="max-width: 800px; margin: 20px auto; font-size: 18px; color: #555; line-height: 1.8;">
+                Este projeto é mantido pela comunidade, para a comunidade. Centenas de desenvolvedores
+                já usaram este material para estudar, se preparar para entrevistas e conseguir vagas
+                em empresas de tecnologia. Junte-se a nós!
+            </p>
+
+            <div style="margin-top: 30px; font-size: 24px;">
+                <span style="margin: 0 10px;">👨‍💻</span>
+                <span style="margin: 0 10px;">👩‍💻</span>
+                <span style="margin: 0 10px;">🧑‍💻</span>
+                <span style="margin: 0 10px;">👨‍💻</span>
+                <span style="margin: 0 10px;">👩‍💻</span>
+            </div>
+
+            <p style="margin-top: 20px; font-size: 14px; color: #777;">
+                Desenvolvedores de todo o Brasil e do mundo
+            </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Pronto para Começar?</h2>
+            <p style="font-size: 20px; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+                Comece sua jornada hoje e torne-se o backend engineer que você sempre quis ser!
+            </p>
+
+            <div class="cta-buttons">
+                <a href="getting-started.html" class="cta-btn">🚀 Getting Started</a>
+                <a href="roadmap.html" class="cta-btn">🗺️ Ver Roadmap</a>
+                <a href="modules.html" class="cta-btn">📚 Explorar Módulos</a>
+                <a href="https://github.com/samueldk12/backend" class="cta-btn" target="_blank">⭐ Star no GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: #2c3e50; color: white; padding: 40px 20px; margin-top: 60px; text-align: center;">
+        <p>Backend Study Repository © 2024</p>
+        <p style="margin-top: 10px; opacity: 0.8;">Desenvolvido com 💜 para ajudar desenvolvedores a crescerem</p>
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/samueldk12/backend" style="color: white; margin: 0 10px;" target="_blank">GitHub</a>
+            <a href="index.html" style="color: white; margin: 0 10px;">Home</a>
+            <a href="about.html" style="color: white; margin: 0 10px;">About</a>
+            <a href="contributing.html" style="color: white; margin: 0 10px;">Contribuir</a>
+        </div>
+    </footer>
+</body>
+</html>
